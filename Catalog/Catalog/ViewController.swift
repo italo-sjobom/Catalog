@@ -9,9 +9,20 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view.
+		let service = CatalogService()
+		service.fetchProducts { result in
+			DispatchQueue.main.async {
+				switch result {
+					case .success(let products):
+						print(products)
+					case .failure(let error):
+						print(error)
+				}
+			}
+		}
 	}
 
 

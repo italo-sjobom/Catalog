@@ -5,71 +5,64 @@
 //  Created by Italo Sjobom on 10/09/23.
 //
 
-/*"name": "VESTIDO TRANSPASSE BOW",
-"style": "20002605",
-"code_color": "20002605_613",
-"color_slug": "tapecaria",
-"color": "TAPEÇARIA",
-"on_sale": false,
-"regular_price": "R$ 199,90",
-"actual_price": "R$ 199,90",
-"discount_percentage": "",
-"installments": "3x R$ 66,63",
-"image": "https://d3l7rqep7l31az.cloudfront.net/images/products/20002605_615_catalog_1.jpg?1460136912",
-"sizes": [{
-	"available": false,
-	"size": "PP",
-	"sku": "5807_343_0_PP"
-}, {
-	"available": true,
-	"size": "P",
-	"sku": "5807_343_0_P"
-}, {
-	"available": true,
-	"size": "M",
-	"sku": "5807_343_0_M"
-}, {
-	"available": true,
-	"size": "G",
-	"sku": "5807_343_0_G"
-}, {
-	"available": false,
-	"size": "GG",
-	"sku": "5807_343_0_GG"
-}]
-*/
-
 struct Product: Codable {
-	let image: String?
 	let name: String
-	let price: String
+	let style: String
+	let codeColor: String
+	let colorSlug: String
+	let color: String
 	let onSale: Bool
+	let price: String
 	let promotionalPrice: String
+	let discountPercentage: String?
+	let installments: String
+	let imageURL: String?
 	let sizes: [Size]
 
-	init(image: String? = nil, name: String, price: String, onSale: Bool, promotionalPrice: String, sizes: [Size]) {
-		self.image = image
+	init(name: String, style: String, codeColor: String, colorSlug: String, color: String, onSale: Bool, price: String, promotionalPrice: String, discountPercentage: String?, installments: String, image: String?, sizes: [Size]) {
 		self.name = name
-		self.price = price
+		self.style = style
+		self.codeColor = codeColor
+		self.colorSlug = colorSlug
+		self.color = color
 		self.onSale = onSale
+		self.price = price
 		self.promotionalPrice = promotionalPrice
+		self.discountPercentage = discountPercentage
+		self.installments = installments
+		self.imageURL = image
 		self.sizes = sizes
 	}
 
 	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		price = try values.decode(String.self, forKey: .price)
-		onSale = try values.decode(Bool.self, forKey: .onSale)
-		promotionalPrice = try values.decode(String.self, forKey: .promotionalPrice)
-		image = nil
-		name = ""
-		sizes = []
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		self.name = try container.decode(String.self, forKey: .name)
+		self.style = try container.decode(String.self, forKey: .style)
+		self.codeColor = try container.decode(String.self, forKey: .codeColor)
+		self.colorSlug = try container.decode(String.self, forKey: .colorSlug)
+		self.color = try container.decode(String.self, forKey: .color)
+		self.onSale = try container.decode(Bool.self, forKey: .onSale)
+		self.price = try container.decode(String.self, forKey: .price)
+		self.promotionalPrice = try container.decode(String.self, forKey: .promotionalPrice)
+		self.discountPercentage = try container.decodeIfPresent(String.self, forKey: .discountPercentage)
+		self.installments = try container.decode(String.self, forKey: .installments)
+		self.imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
+		self.sizes = try container.decode([Size].self, forKey: .sizes)
 	}
 
 	enum CodingKeys: String, CodingKey {
-		case price = "regular_price"
+		case name
+		case style
+		case codeColor = "code_color"
+		case colorSlug = "color_slug"
+		case color
 		case onSale = "on_sale"
+		case price = "regular_price"
 		case promotionalPrice = "actual_price"
+		case discountPercentage = "discount_percentage"
+		case installments
+		case imageURL = "image"
+		case sizes
 	}
 }
 
