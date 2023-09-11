@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		E904E1512AAE50E5007F7826 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1502AAE50E5007F7826 /* AppDelegate.swift */; };
 		E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1522AAE50E5007F7826 /* SceneDelegate.swift */; };
-		E904E1552AAE50E5007F7826 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1542AAE50E5007F7826 /* ViewController.swift */; };
 		E904E1582AAE50E5007F7826 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E904E1562AAE50E5007F7826 /* Main.storyboard */; };
 		E904E15A2AAE50E6007F7826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E904E1592AAE50E6007F7826 /* Assets.xcassets */; };
 		E904E15D2AAE50E6007F7826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */; };
@@ -20,6 +19,8 @@
 		E904E3812AAE5594007F7826 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E3802AAE5594007F7826 /* Size.swift */; };
 		E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E38C2AAE69B0007F7826 /* CatalogService.swift */; };
 		E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */; };
+		E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B42AAE8132003F97F7 /* ProductCell.swift */; };
+		E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,7 +44,6 @@
 		E904E14D2AAE50E5007F7826 /* Catalog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Catalog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E904E1502AAE50E5007F7826 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E904E1522AAE50E5007F7826 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E904E1542AAE50E5007F7826 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E904E1572AAE50E5007F7826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E904E1592AAE50E6007F7826 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E904E15C2AAE50E6007F7826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -57,6 +57,8 @@
 		E904E3802AAE5594007F7826 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E904E38C2AAE69B0007F7826 /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 		E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
+		E9B030B42AAE8132003F97F7 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,11 +109,11 @@
 		E904E14F2AAE50E5007F7826 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E9B030B02AAE80FE003F97F7 /* Scenes */,
 				E904E38B2AAE6988007F7826 /* Services */,
 				E904E1802AAE5130007F7826 /* Models */,
 				E904E1502AAE50E5007F7826 /* AppDelegate.swift */,
 				E904E1522AAE50E5007F7826 /* SceneDelegate.swift */,
-				E904E1542AAE50E5007F7826 /* ViewController.swift */,
 				E904E1562AAE50E5007F7826 /* Main.storyboard */,
 				E904E1592AAE50E6007F7826 /* Assets.xcassets */,
 				E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */,
@@ -153,6 +155,31 @@
 				E904E38C2AAE69B0007F7826 /* CatalogService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		E9B030B02AAE80FE003F97F7 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				E9B030B22AAE8132003F97F7 /* CatalogScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E9B030B22AAE8132003F97F7 /* CatalogScene */ = {
+			isa = PBXGroup;
+			children = (
+				E9B030B32AAE8132003F97F7 /* Views */,
+				E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */,
+			);
+			path = CatalogScene;
+			sourceTree = "<group>";
+		};
+		E9B030B32AAE8132003F97F7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9B030B42AAE8132003F97F7 /* ProductCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -286,11 +313,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E904E1552AAE50E5007F7826 /* ViewController.swift in Sources */,
 				E904E3812AAE5594007F7826 /* Size.swift in Sources */,
 				E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */,
 				E904E37F2AAE542A007F7826 /* Product.swift in Sources */,
 				E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */,
+				E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */,
+				E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */,
 				E904E1512AAE50E5007F7826 /* AppDelegate.swift in Sources */,
 				E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */,
 			);
