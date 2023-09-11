@@ -7,11 +7,16 @@
 
 import UIKit
 
-enum CatalogFactory {
-	static func make() -> UIViewController {
+final class CatalogFactory {
+	private static var viewController: CatalogViewController?
+
+	private static func makeScene() {
 		let presenter = CatalogPresenter()
 		let interactor = CatalogInteractor(presenter: presenter)
-		let viewController = CatalogViewController(interactor: interactor)
-		return viewController
+		viewController = CatalogViewController(interactor: interactor)
+	}
+	static func getViewController() -> UIViewController {
+		CatalogFactory.makeScene()
+		return viewController ?? UIViewController()
 	}
 }

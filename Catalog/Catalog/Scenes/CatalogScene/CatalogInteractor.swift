@@ -20,6 +20,10 @@ final class CatalogInteractor: CatalogInteracting {
 		self.presenter = presenter
 	}
 
+	init() {
+		self.presenter = CatalogPresenter()
+	}
+
 	func openChart() {
 
 	}
