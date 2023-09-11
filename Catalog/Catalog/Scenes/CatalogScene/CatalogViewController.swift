@@ -43,6 +43,7 @@ final class CatalogViewController: UIViewController {
 		title = "Catalog"
 		configureViews()
 		loadData()
+		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cart", style: .plain, target: self, action: #selector(displayCart))
 	}
 
 	override func loadView() {
@@ -72,6 +73,13 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		//TODO: Disparar a lógica para a abertura da scene de detalhamento do produto
+	}
+}
+
+//MARK: Actions
+extension CatalogViewController {
+	@objc func displayCart(){
+		interactor.openCart()
 	}
 }
 

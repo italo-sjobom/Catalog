@@ -8,7 +8,7 @@
 import Foundation
 
 protocol CatalogPresenting {
-	func presentChart()
+	func presentCart()
 	func presentProduct(products: [Product])
 	func presentError(description: String)
 }
@@ -16,8 +16,8 @@ protocol CatalogPresenting {
 final class CatalogPresenter: CatalogPresenting {
 	weak var viewController: CatalogViewController?
 
-	func presentChart() {
-		// TODO: Chamar nova Scene do Carrinho aqui através da Factory
+	func presentCart() {
+		viewController?.navigationController?.pushViewController(CartFactory.getViewController(), animated: true) 
 	}
 
 	func presentProduct(products: [Product]) {

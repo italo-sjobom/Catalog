@@ -8,8 +8,8 @@
 import Foundation
 
 protocol CatalogInteracting {
-	func openChart()
-	func addToChart()
+	func openCart()
+	func addToCart()
 	func openProduct()
 	func fetchProducts()
 }
@@ -23,11 +23,11 @@ final class CatalogInteractor: CatalogInteracting {
 		self.service = service
 	}
 
-	func openChart() {
-		//TODO: Chamar a apresentação da scene de Carrinho
+	func openCart() {
+		presenter.presentCart()
 	}
 
-	func addToChart() {
+	func addToCart() {
 		//TODO: Adicionar um produto no Carrinho
 	}
 

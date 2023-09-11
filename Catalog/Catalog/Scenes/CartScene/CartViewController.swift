@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CartViewController: UIViewController {
+final class CartViewController: UIViewController {
 	lazy var tableView: UITableView = {
 		let tableView = UITableView(frame: .zero, style: .plain)
 		tableView.dataSource = self
@@ -33,7 +33,7 @@ class CartViewController: UIViewController {
 
 	init(interactor: CartInteracting) {
 		self.interactor = interactor
-		super.init()
+		super.init(nibName: nil, bundle: nil)
 	}
 	
 	required init?(coder aDecoder: NSCoder) {
