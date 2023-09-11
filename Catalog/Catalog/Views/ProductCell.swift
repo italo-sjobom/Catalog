@@ -12,12 +12,12 @@ class ProductCell: UITableViewCell {
 	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
 	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
 	lazy var promotionalPriceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .bold)
+	lazy var onSaleLabel: UILabel = getUILabel(text: "On Sale", fontSize: 12, fontWeight: .heavy)
 	lazy var productImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.clipsToBounds = true
 		imageView.contentMode = .scaleAspectFit
-		imageView.backgroundColor = .red
 		return imageView
 	}()
 	lazy var infoStackView: UIStackView = {
@@ -29,7 +29,7 @@ class ProductCell: UITableViewCell {
 		stackView.distribution = .fillEqually
 		stackView.addArrangedSubview(nameLabel)
 		stackView.addArrangedSubview(priceStackView)
-		stackView.backgroundColor = .blue
+		stackView.addArrangedSubview(sizesStackView)
 		return stackView
 	}()
 	lazy var priceStackView: UIStackView = {
@@ -39,9 +39,17 @@ class ProductCell: UITableViewCell {
 		stackView.clipsToBounds = true
 		stackView.contentMode = .scaleAspectFit
 		stackView.distribution = .fill
+		stackView.spacing = 4
 		stackView.addArrangedSubview(priceLabel)
-		stackView.addArrangedSubview(promotionalPriceLabel)
-		stackView.backgroundColor = .brown
+		return stackView
+	}()
+	lazy var sizesStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .horizontal
+		stackView.clipsToBounds = true
+		stackView.contentMode = .scaleAspectFit
+		stackView.distribution = .equalSpacing
 		return stackView
 	}()
 
@@ -89,11 +97,11 @@ class ProductCell: UITableViewCell {
 
 	func setupCell(name: String, imageURL: String, price: String, promotionalPrice: String,
 				   onSale: Bool, sizes: [Size]) {
-		setupImage(urlString: imageURL)
-		self.nameLabel.text = name
-		self.priceLabel.text = price
-		self.promotionalPriceLabel.text = promotionalPrice
+		nameLabel.text = name
+		priceLabel.text = price
+		promotionalPriceLabel.text = promotionalPrice
 		self.onSale = onSale
+		setupImage(urlString: imageURL)
 	}
 
 	private func setupImage(urlString: String) {
@@ -109,9 +117,10 @@ class ProductCell: UITableViewCell {
 		}
 	}
 
-	private func getUILabel(fontSize: CGFloat, fontWeight: UIFont.Weight) -> UILabel {
+	private func getUILabel(text: String = "", fontSize: CGFloat, fontWeight: UIFont.Weight) -> UILabel {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
+		label.text = text
 		label.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
 		return label
 	}
