@@ -11,9 +11,11 @@ final class CatalogFactory {
 	private static var viewController: CatalogViewController?
 
 	private static func makeScene() {
+		let service = CatalogService()
 		let presenter = CatalogPresenter()
-		let interactor = CatalogInteractor(presenter: presenter)
+		let interactor = CatalogInteractor(presenter: presenter, service: service)
 		viewController = CatalogViewController(interactor: interactor)
+		presenter.viewController = viewController
 	}
 	static func getViewController() -> UIViewController {
 		CatalogFactory.makeScene()

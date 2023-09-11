@@ -16,11 +16,11 @@ class ProductCell: UITableViewCell {
 		return label
 	}()
 	lazy var productImage: UIImageView = {
-		let imgView = UIImageView()
-		imgView.translatesAutoresizingMaskIntoConstraints = false
-		imgView.clipsToBounds = true
-		imgView.contentMode = .scaleAspectFit
-		return imgView
+		let imageView = UIImageView()
+		imageView.translatesAutoresizingMaskIntoConstraints = false
+		imageView.clipsToBounds = true
+		imageView.contentMode = .scaleAspectFit
+		return imageView
 	}()
 	private var task: URLSessionDataTask?
 

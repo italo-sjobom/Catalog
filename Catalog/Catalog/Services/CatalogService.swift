@@ -9,7 +9,7 @@ import Foundation
 private let apiURL = "http://www.mocky.io/v2/59b6a65a0f0000e90471257d"
 
 protocol CatalogServicing {
-	func fetchProducts(completion: @escaping (Result<Products, CustomError>) -> Void)
+	func fetchProducts(completion: @escaping (Result<ProductsResponse, CustomError>) -> Void)
 }
 
 class CatalogService: CatalogServicing {
@@ -21,7 +21,7 @@ class CatalogService: CatalogServicing {
 		self.url = url
 	}
 
-	func fetchProducts(completion: @escaping (Result<Products, CustomError>) -> Void) {
+	func fetchProducts(completion: @escaping (Result<ProductsResponse, CustomError>) -> Void) {
 		guard let api = URL(string: url) else {
 			return completion(.failure(.invalidApi))
 		}
@@ -45,7 +45,7 @@ class CatalogService: CatalogServicing {
 
 			do {
 				let decoder = JSONDecoder()
-				let decoded = try decoder.decode(Products.self, from: jsonData)
+				let decoded = try decoder.decode(ProductsResponse.self, from: jsonData)
 				completion(.success(decoded))
 			} catch {
 				completion(.failure(.decodedError(error)))

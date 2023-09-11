@@ -35,8 +35,7 @@ class CatalogViewController: UIViewController {
 	}
 
 	required init?(coder aDecoder: NSCoder) {
-		self.interactor = CatalogInteractor()
-		super.init(coder: aDecoder)
+		fatalError("Não use storyboards")
 	}
 
 	override func viewDidLoad() {
@@ -51,39 +50,9 @@ class CatalogViewController: UIViewController {
 		view.backgroundColor = .white
 		self.view = view
 	}
-
-	func configureViews() {
-		view.addSubview(tableView)
-		NSLayoutConstraint.activate([
-			tableView.topAnchor.constraint(equalTo: view.topAnchor),
-			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
-		])
-	}
-
-	func loadData() {
-		let service = CatalogService()
-		service.fetchProducts { [weak self] result in
-			guard let self = self else { return }
-			DispatchQueue.main.async {
-				switch result {
-					case .success(let products):
-						print(products)
-						self.products = products.products
-						self.tableView.reloadData()
-						self.activity.stopAnimating()
-					case .failure(let error):
-						print(error)
-						self.tableView.reloadData()
-						self.activity.stopAnimating()
-				}
-			}
-		}
-	}
-
 }
 
+//MARK: UITableViewDataSource and UITableViewDelegate
 extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return products.count
@@ -102,5 +71,45 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
+	}
+}
+
+//MARK: UI
+extension CatalogViewController {
+	private func configureViews() {
+		view.addSubview(tableView)
+		NSLayoutConstraint.activate([
+			tableView.topAnchor.constraint(equalTo: view.topAnchor),
+			tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+			tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+		])
+	}
+
+	private func reloadUI() {
+		tableView.reloadData()
+		activity.stopAnimating()
+	}
+
+	private func displayAlert(title: String, message: String) {
+		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		present(alert, animated: true)
+	}
+
+	func displayProducts(products: [Product]) {
+		self.products = products
+		reloadUI()
+	}
+
+	func displayError(description: String) {
+		displayAlert(title: "Ops, ocorreu um erro", message: description)
+	}
+}
+
+//MARK: Data
+extension CatalogViewController {
+	private func loadData() {
+		interactor.fetchProducts()
 	}
 }
