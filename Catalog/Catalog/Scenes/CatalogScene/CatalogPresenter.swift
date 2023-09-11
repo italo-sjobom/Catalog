@@ -17,7 +17,7 @@ final class CatalogPresenter: CatalogPresenting {
 	weak var viewController: CatalogViewController?
 
 	func presentChart() {
-
+		// TODO: Chamar nova Scene do Carrinho aqui através da Factory
 	}
 
 	func presentProduct(products: [Product]) {

@@ -24,15 +24,15 @@ final class CatalogInteractor: CatalogInteracting {
 	}
 
 	func openChart() {
-
+		//TODO: Chamar a apresentação da scene de Carrinho
 	}
 
 	func addToChart() {
-
+		//TODO: Adicionar um produto no Carrinho
 	}
 
 	func openProduct() {
-
+		//TODO: Chamar a apresentação da scene de detalhamento do produto
 	}
 
 	func fetchProducts() {

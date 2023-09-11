@@ -70,7 +70,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 
 	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+		//TODO: Disparar a lógica para a abertura da scene de detalhamento do produto
 	}
 }
 
