@@ -7,10 +7,16 @@
 
 import UIKit
 
-final class CatalogFactory {
-	private static var viewController: CatalogViewController?
+protocol CatalogFactoring {
+	static var viewController: CatalogViewController? { get set }
+	static func makeScene()
+	static func getViewController() -> UIViewController
+}
 
-	private static func makeScene() {
+final class CatalogFactory: CatalogFactoring {
+	static var viewController: CatalogViewController?
+
+	static func makeScene() {
 		let service = CatalogService()
 		let presenter = CatalogPresenter()
 		let interactor = CatalogInteractor(presenter: presenter, service: service)

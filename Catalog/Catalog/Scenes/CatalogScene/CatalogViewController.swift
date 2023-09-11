@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CatalogViewController: UIViewController {
+final class CatalogViewController: UIViewController {
 
 	lazy var tableView: UITableView = {
 		let tableView = UITableView(frame: .zero, style: .plain)
