@@ -52,13 +52,13 @@ class ProductCell: UITableViewCell {
 		contentView.addSubview(productImage)
 		contentView.addSubview(productName)
 
-		productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15).isActive = true
+		productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
 		productImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 		productImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		productImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
 		productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 16).isActive = true
-		productName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15).isActive = true
+		productName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
 		productName.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		productName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 	}

@@ -27,12 +27,15 @@ class CatalogViewController: UIViewController {
 		return activity
 	}()
 	var products: [Product] = []
+	let interactor: CatalogInteracting
 
-	init() {
+	init(interactor: CatalogInteracting) {
+		self.interactor = interactor
 		super.init(nibName: nil, bundle: nil)
 	}
 
 	required init?(coder aDecoder: NSCoder) {
+		self.interactor = CatalogInteractor()
 		super.init(coder: aDecoder)
 	}
 

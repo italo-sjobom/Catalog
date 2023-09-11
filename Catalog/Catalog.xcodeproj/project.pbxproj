@@ -21,6 +21,9 @@
 		E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */; };
 		E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B42AAE8132003F97F7 /* ProductCell.swift */; };
 		E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */; };
+		E9B030B92AAEA0CD003F97F7 /* CatalogInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B82AAEA0CD003F97F7 /* CatalogInteractor.swift */; };
+		E9B030BB2AAEA0EB003F97F7 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030BA2AAEA0EB003F97F7 /* CatalogPresenter.swift */; };
+		E9B032BA2AAEA316003F97F7 /* CatalogFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032B92AAEA316003F97F7 /* CatalogFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		E9B030B42AAE8132003F97F7 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		E9B030B82AAEA0CD003F97F7 /* CatalogInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogInteractor.swift; sourceTree = "<group>"; };
+		E9B030BA2AAEA0EB003F97F7 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
+		E9B032B92AAEA316003F97F7 /* CatalogFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +176,9 @@
 			children = (
 				E9B030B32AAE8132003F97F7 /* Views */,
 				E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */,
+				E9B030B82AAEA0CD003F97F7 /* CatalogInteractor.swift */,
+				E9B030BA2AAEA0EB003F97F7 /* CatalogPresenter.swift */,
+				E9B032B92AAEA316003F97F7 /* CatalogFactory.swift */,
 			);
 			path = CatalogScene;
 			sourceTree = "<group>";
@@ -319,8 +328,11 @@
 				E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */,
 				E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */,
 				E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */,
+				E9B032BA2AAEA316003F97F7 /* CatalogFactory.swift in Sources */,
 				E904E1512AAE50E5007F7826 /* AppDelegate.swift in Sources */,
 				E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */,
+				E9B030BB2AAEA0EB003F97F7 /* CatalogPresenter.swift in Sources */,
+				E9B030B92AAEA0CD003F97F7 /* CatalogInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
