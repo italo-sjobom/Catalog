@@ -64,7 +64,8 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 
 		let product = products[indexPath.row]
-		cell.setupCell(name: product.name, imageURL: product.imageURL ?? "")
+		cell.setupCell(name: product.name, imageURL: product.imageURL ?? "", price: product.price,
+					   promotionalPrice: product.promotionalPrice, onSale: product.onSale, sizes: product.sizes)
 
 		return cell
 	}

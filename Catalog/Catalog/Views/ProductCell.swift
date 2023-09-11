@@ -9,20 +9,44 @@ import UIKit
 
 class ProductCell: UITableViewCell {
 
-	lazy var productName: UILabel = {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-		return label
-	}()
+	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
+	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
+	lazy var promotionalPriceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .bold)
 	lazy var productImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.clipsToBounds = true
 		imageView.contentMode = .scaleAspectFit
+		imageView.backgroundColor = .red
 		return imageView
 	}()
+	lazy var infoStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		stackView.clipsToBounds = true
+		stackView.contentMode = .scaleAspectFit
+		stackView.distribution = .fillEqually
+		stackView.addArrangedSubview(nameLabel)
+		stackView.addArrangedSubview(priceStackView)
+		stackView.backgroundColor = .blue
+		return stackView
+	}()
+	lazy var priceStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .horizontal
+		stackView.clipsToBounds = true
+		stackView.contentMode = .scaleAspectFit
+		stackView.distribution = .fill
+		stackView.addArrangedSubview(priceLabel)
+		stackView.addArrangedSubview(promotionalPriceLabel)
+		stackView.backgroundColor = .brown
+		return stackView
+	}()
+
 	private var task: URLSessionDataTask?
+	private var onSale: Bool = false
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -44,28 +68,32 @@ class ProductCell: UITableViewCell {
 
 	override func prepareForReuse() {
 		super.prepareForReuse()
-		productName.text = ""
+		nameLabel.text = ""
 		task?.cancel()
 	}
 
 	func configureViews() {
 		contentView.addSubview(productImage)
-		contentView.addSubview(productName)
+		contentView.addSubview(infoStackView)
 
 		productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
 		productImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 		productImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		productImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-		productName.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 16).isActive = true
-		productName.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
-		productName.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-		productName.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+		infoStackView.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 16).isActive = true
+		infoStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+		infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+		infoStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 	}
 
-	func setupCell(name: String, imageURL: String) {
-		productName.text = name
+	func setupCell(name: String, imageURL: String, price: String, promotionalPrice: String,
+				   onSale: Bool, sizes: [Size]) {
 		setupImage(urlString: imageURL)
+		self.nameLabel.text = name
+		self.priceLabel.text = price
+		self.promotionalPriceLabel.text = promotionalPrice
+		self.onSale = onSale
 	}
 
 	private func setupImage(urlString: String) {
@@ -79,5 +107,12 @@ class ProductCell: UITableViewCell {
 			}
 			task?.resume()
 		}
+	}
+
+	private func getUILabel(fontSize: CGFloat, fontWeight: UIFont.Weight) -> UILabel {
+		let label = UILabel()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		label.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
+		return label
 	}
 }
