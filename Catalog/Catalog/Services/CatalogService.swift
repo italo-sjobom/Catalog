@@ -31,8 +31,12 @@ class CatalogService: CatalogServicing {
 				completion(.failure(.sessionError(message: error.localizedDescription)))
 			}
 
-			if let httpResponse = response as? HTTPURLResponse, 200...299 ~= httpResponse.statusCode {
-				return completion(.failure(.responseError(code: httpResponse.statusCode)))
+			if let httpResponse = response as? HTTPURLResponse {
+				guard 200...299 ~= httpResponse.statusCode else {
+					return completion(.failure(.responseError(code: httpResponse.statusCode)))
+				}
+			} else {
+				completion(.failure(.invalidResponse))
 			}
 
 			guard let jsonData = data else {
@@ -56,6 +60,7 @@ enum CustomError: Error {
 	case decodedError(Error)
 	case invalidApi
 	case invalidData
+	case invalidResponse
 	case responseError(code: Int)
 	case sessionError(message: String)
 }
