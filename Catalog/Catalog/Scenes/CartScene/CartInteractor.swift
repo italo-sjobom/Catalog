@@ -36,6 +36,7 @@ final class CartInteractor: CartInteracting {
 	}
 
 	func toggleState() {
+		presenter.presentFilterButton(title: cartManager.getCurrentFilter().stateString())
 		cartManager.toggleState()
 		presenter.presentFilteredProducts(products: cartManager.getProducts())
 	}

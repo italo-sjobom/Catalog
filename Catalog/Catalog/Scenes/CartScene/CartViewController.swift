@@ -37,7 +37,6 @@ final class CartViewController: UIViewController {
 	lazy var filterButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("On Sale", for: .normal)
-		button.setTitle("All products", for: .selected)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .red
 		button.addTarget(self, action: #selector(filterAction), for: .touchUpInside)
@@ -49,9 +48,6 @@ final class CartViewController: UIViewController {
 	init(interactor: CartInteracting, products: [Product]) {
 		self.interactor = interactor
 		self.products = products
-		products.forEach { p in
-			print(p.name)
-		}
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -79,6 +75,11 @@ final class CartViewController: UIViewController {
 	func displayProducts(products: [Product]) {
 		self.products = products
 		reloadUI()
+	}
+
+	func displayFilterButton(title: String) {
+		filterButton.setTitle(title, for: .normal)
+		filterButton.reloadInputViews()
 	}
 }
 

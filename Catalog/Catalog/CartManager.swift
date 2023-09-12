@@ -11,12 +11,20 @@ protocol CartManaging: AnyObject {
 	func addProduct(product: Product)
 	func removeProduct(product: Product)
 	func toggleState()
-	func getProducts()->[Product]
+	func getProducts() -> [Product]
+	func getCurrentFilter() -> FilterType
 }
 
 enum FilterType {
 	case all
 	case onSale
+
+	func stateString() -> String {
+		switch self {
+			case .all: return "All"
+			case .onSale: return "On Sale"
+		}
+	}
 }
 
 class CartManager: CartManaging {
@@ -55,5 +63,9 @@ class CartManager: CartManaging {
 			case .onSale:
 				return getOnSaleProducts()
 		}
+	}
+
+	func getCurrentFilter() -> FilterType {
+		return filter
 	}
 }
