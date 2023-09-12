@@ -14,7 +14,7 @@ final class CartViewController: UIViewController {
 		tableView.delegate = self
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.backgroundView = activity
-		tableView.register(ProductCell.self, forCellReuseIdentifier: String(describing: ProductCell.self))
+		tableView.register(ProductCartCell.self, forCellReuseIdentifier: String(describing: ProductCartCell.self))
 		tableView.rowHeight = 120
 		tableView.tableFooterView = UIView()
 		tableView.backgroundColor = .cyan
@@ -51,7 +51,6 @@ final class CartViewController: UIViewController {
 		products.forEach { p in
 			print(p.name)
 		}
-
 		super.init(nibName: nil, bundle: nil)
 	}
 	
@@ -76,12 +75,18 @@ final class CartViewController: UIViewController {
 //MARK: UITableViewDataSource e UITableViewDelegate
 extension CartViewController: UITableViewDataSource, UITableViewDelegate {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return 4
+		return products.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = UITableViewCell()
-		cell.backgroundColor = .brown
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCartCell.self), for: indexPath) as? ProductCartCell else {
+			return UITableViewCell()
+		}
+
+		let product = products[indexPath.row]
+		cell.delegate = self
+		cell.setupCell(product: product)
+
 		return cell
 	}
 
@@ -120,4 +125,19 @@ extension CartViewController {
 		tableView.reloadData()
 		activity.stopAnimating()
 	}
+}
+
+extension CartViewController: ProductCartCellDelegate {
+	func addToCart(product: Product) {
+		interactor.addProduct()
+	}
+
+	func removeFromCart(product: Product) {
+		interactor.removeProduct()
+	}
+
+	func deleteFromCart(product: Product) {
+	}
+
+
 }
