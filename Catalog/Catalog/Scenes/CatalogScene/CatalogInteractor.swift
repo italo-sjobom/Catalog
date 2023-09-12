@@ -43,10 +43,8 @@ final class CatalogInteractor: CatalogInteracting {
 			DispatchQueue.main.async {
 				switch result {
 					case .success(let productResponse):
-						print(productResponse)
 						self.presenter.presentProduct(products: productResponse.products)
 					case .failure(let error):
-						print(error)
 						self.presenter.presentError(description: error.localizedDescription)
 				}
 			}
