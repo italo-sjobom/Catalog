@@ -10,20 +10,16 @@ import UIKit
 protocol CartFactoring {
 	static var viewController: CatalogViewController? { get set }
 	static func makeScene()
-	static func getViewController() -> UIViewController
 }
 
 final class CartFactory {
 	private static var viewController: CartViewController?
 
-	private static func makeScene() {
+	static func makeScene(cartManager: CartManaging) -> UIViewController {
 		let presenter = CartPresenter()
-		let interactor = CartInteractor(presenter: presenter)
-		viewController = CartViewController(interactor: interactor)
+		let interactor = CartInteractor(presenter: presenter, cartManager: cartManager)
+		viewController = CartViewController(interactor: interactor, products: cartManager.getProducts())
 		presenter.viewController = viewController
-	}
-	static func getViewController() -> UIViewController {
-		CartFactory.makeScene()
 		return viewController ?? UIViewController()
 	}
 }

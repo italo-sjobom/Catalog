@@ -15,13 +15,15 @@ protocol CartInteracting {
 
 final class CartInteractor: CartInteracting {
 	private let presenter: CartPresenting
+	private let cartManager: CartManaging
 
-	init(presenter: CartPresenting) {
+	init(presenter: CartPresenting, cartManager: CartManaging) {
 		self.presenter = presenter
+		self.cartManager = cartManager
 	}
 
 	func addProduct() {
-
+		
 	}
 
 	func removeProduct() {

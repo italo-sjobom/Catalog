@@ -65,8 +65,8 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 		}
 
 		let product = products[indexPath.row]
-		cell.setupCell(name: product.name, imageURL: product.imageURL ?? "", price: product.price,
-					   promotionalPrice: product.promotionalPrice, onSale: product.onSale, sizes: product.sizes)
+		cell.delegate = self
+		cell.setupCell(product: product)
 
 		return cell
 	}
@@ -120,5 +120,12 @@ extension CatalogViewController {
 extension CatalogViewController {
 	private func loadData() {
 		interactor.fetchProducts()
+	}
+}
+
+//MARK: ProductCell
+extension CatalogViewController: ProductCellDelegate {
+	func addToCart(product: Product) {
+		interactor.addToCart(product: product)
 	}
 }

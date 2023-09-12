@@ -9,7 +9,7 @@ import Foundation
 
 protocol CatalogInteracting {
 	func openCart()
-	func addToCart()
+	func addToCart(product: Product)
 	func openProduct()
 	func fetchProducts()
 }
@@ -17,18 +17,20 @@ protocol CatalogInteracting {
 final class CatalogInteractor: CatalogInteracting {
 	private let presenter: CatalogPresenting
 	private let service: CatalogServicing
+	private let cartManager: CartManaging
 
-	init(presenter: CatalogPresenting, service: CatalogService) {
+	init(presenter: CatalogPresenting, service: CatalogService, cartManager: CartManaging) {
 		self.presenter = presenter
 		self.service = service
+		self.cartManager = cartManager
 	}
 
 	func openCart() {
-		presenter.presentCart()
+		presenter.presentCart(cartManager: cartManager)
 	}
 
-	func addToCart() {
-		//TODO: Adicionar um produto no Carrinho
+	func addToCart(product: Product) {
+		cartManager.addProduct(product: product)
 	}
 
 	func openProduct() {

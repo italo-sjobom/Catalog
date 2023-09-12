@@ -27,6 +27,7 @@
 		E9B032BF2AAF81EC003F97F7 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032BE2AAF81EC003F97F7 /* CartInteractor.swift */; };
 		E9B032C12AAF81FA003F97F7 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C02AAF81FA003F97F7 /* CartPresenter.swift */; };
 		E9B032C32AAF8203003F97F7 /* CartFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C22AAF8203003F97F7 /* CartFactory.swift */; };
+		E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C42AAFD42A003F97F7 /* CartManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		E9B032BE2AAF81EC003F97F7 /* CartInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
 		E9B032C02AAF81FA003F97F7 /* CartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
 		E9B032C22AAF8203003F97F7 /* CartFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFactory.swift; sourceTree = "<group>"; };
+		E9B032C42AAFD42A003F97F7 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +131,7 @@
 				E904E1592AAE50E6007F7826 /* Assets.xcassets */,
 				E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */,
 				E904E15E2AAE50E6007F7826 /* Info.plist */,
+				E9B032C42AAFD42A003F97F7 /* CartManager.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -339,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9B032C12AAF81FA003F97F7 /* CartPresenter.swift in Sources */,
+				E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */,
 				E904E3812AAE5594007F7826 /* Size.swift in Sources */,
 				E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */,
 				E904E37F2AAE542A007F7826 /* Product.swift in Sources */,

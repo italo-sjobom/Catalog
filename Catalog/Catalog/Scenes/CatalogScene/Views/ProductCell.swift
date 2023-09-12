@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProductCellDelegate: AnyObject {
+	func addToCart(product: Product)
+}
+
 class ProductCell: UITableViewCell {
 
 	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
@@ -52,9 +56,34 @@ class ProductCell: UITableViewCell {
 		stackView.distribution = .equalSpacing
 		return stackView
 	}()
+	lazy var buttonStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		stackView.clipsToBounds = true
+		stackView.contentMode = .scaleAspectFit
+		stackView.distribution = .equalSpacing
+		stackView.addArrangedSubview(addButton)
+		stackView.backgroundColor = .red
+		return stackView
+	}()
+	lazy var addButton: UIButton = {
+		let button = UIButton()
+		button.setTitle("Add", for: .normal)
+		button.backgroundColor = .blue
+		button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
+		return button
+	}()
+
+
+	@objc func addToCart() {
+		delegate?.addToCart(product: product!)
+	}
 
 	private var task: URLSessionDataTask?
 	private var onSale: Bool = false
+	private var product: Product!
+	weak var delegate: ProductCellDelegate?
 
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -83,6 +112,7 @@ class ProductCell: UITableViewCell {
 	func configureViews() {
 		contentView.addSubview(productImage)
 		contentView.addSubview(infoStackView)
+		contentView.addSubview(buttonStackView)
 
 		productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
 		productImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
@@ -90,18 +120,25 @@ class ProductCell: UITableViewCell {
 		productImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
 		infoStackView.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 16).isActive = true
-		infoStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
 		infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		infoStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+
+		buttonStackView.leadingAnchor.constraint(equalTo: infoStackView.trailingAnchor, constant: 16).isActive = true
+		buttonStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+		buttonStackView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+		buttonStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		buttonStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+
+
 	}
 
-	func setupCell(name: String, imageURL: String, price: String, promotionalPrice: String,
-				   onSale: Bool, sizes: [Size]) {
-		nameLabel.text = name
-		priceLabel.text = price
-		promotionalPriceLabel.text = promotionalPrice
-		self.onSale = onSale
-		setupImage(urlString: imageURL)
+	func setupCell(product: Product) {
+		nameLabel.text = product.name
+		priceLabel.text = product.price
+		promotionalPriceLabel.text = product.promotionalPrice
+		self.onSale = product.onSale
+		setupImage(urlString: product.imageURL ?? "")
+		self.product = product
 	}
 
 	private func setupImage(urlString: String) {

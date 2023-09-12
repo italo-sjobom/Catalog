@@ -43,9 +43,15 @@ final class CartViewController: UIViewController {
 		return button
 	}()
 	private let interactor: CartInteracting
+	private let products: [Product]
 
-	init(interactor: CartInteracting) {
+	init(interactor: CartInteracting, products: [Product]) {
 		self.interactor = interactor
+		self.products = products
+		products.forEach { p in
+			print(p.name)
+		}
+
 		super.init(nibName: nil, bundle: nil)
 	}
 	

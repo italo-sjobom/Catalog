@@ -5,7 +5,7 @@
 //  Created by Italo Sjobom on 10/09/23.
 //
 
-struct Product: Codable {
+struct Product: Codable, Equatable {
 	let name: String
 	let style: String
 	let codeColor: String
@@ -63,6 +63,20 @@ struct Product: Codable {
 		case installments
 		case imageURL = "image"
 		case sizes
+	}
+
+	static func == (lhs: Product, rhs: Product) -> Bool {
+		return lhs.name == rhs.name &&
+		lhs.style == rhs.style &&
+		lhs.codeColor == rhs.codeColor &&
+		lhs.colorSlug == rhs.colorSlug &&
+		lhs.color == rhs.color &&
+		lhs.onSale == rhs.onSale &&
+		lhs.price == rhs.price &&
+		lhs.promotionalPrice == rhs.promotionalPrice &&
+		lhs.discountPercentage == rhs.discountPercentage &&
+		lhs.installments == rhs.installments &&
+		lhs.imageURL == rhs.imageURL 
 	}
 }
 
