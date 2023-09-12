@@ -8,9 +8,10 @@
 import Foundation
 
 protocol CartInteracting {
-	func addProduct()
-	func removeProduct()
-	func openProduct()
+	func addProduct(product: Product)
+	func removeProduct(product: Product)
+	func openProduct(product: Product)
+	func toggleState()
 }
 
 final class CartInteractor: CartInteracting {
@@ -22,15 +23,20 @@ final class CartInteractor: CartInteracting {
 		self.cartManager = cartManager
 	}
 
-	func addProduct() {
-		
+	func addProduct(product: Product) {
+		cartManager.addProduct(product: product)
 	}
 
-	func removeProduct() {
+	func removeProduct(product: Product) {
+		cartManager.removeProduct(product: product)
+	}
+
+	func openProduct(product: Product) {
 
 	}
 
-	func openProduct() {
-
+	func toggleState() {
+		cartManager.toggleState()
+		presenter.presentFilteredProducts(products: cartManager.getProducts())
 	}
 }

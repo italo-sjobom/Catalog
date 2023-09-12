@@ -34,16 +34,17 @@ final class CartViewController: UIViewController {
 		label.backgroundColor = .blue
 		return label
 	}()
-	lazy var filterOnSale: UIButton = {
+	lazy var filterButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("On Sale", for: .normal)
 		button.setTitle("All products", for: .selected)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .red
+		button.addTarget(self, action: #selector(filterAction), for: .touchUpInside)
 		return button
 	}()
 	private let interactor: CartInteracting
-	private let products: [Product]
+	private var products: [Product]
 
 	init(interactor: CartInteracting, products: [Product]) {
 		self.interactor = interactor
@@ -70,6 +71,15 @@ final class CartViewController: UIViewController {
 		self.view = view
 		activity.stopAnimating()
 	}
+
+	@objc func filterAction() {
+		interactor.toggleState()
+	}
+
+	func displayProducts(products: [Product]) {
+		self.products = products
+		reloadUI()
+	}
 }
 
 //MARK: UITableViewDataSource e UITableViewDelegate
@@ -82,11 +92,9 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCartCell.self), for: indexPath) as? ProductCartCell else {
 			return UITableViewCell()
 		}
-
 		let product = products[indexPath.row]
 		cell.delegate = self
 		cell.setupCell(product: product)
-
 		return cell
 	}
 
@@ -98,18 +106,18 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
 //MARK: UI
 extension CartViewController {
 	private func configureViews() {
-		view.addSubview(filterOnSale)
+		view.addSubview(filterButton)
 		view.addSubview(tableView)
 		view.addSubview(totalLabel)
 
 		let margins = view.layoutMarginsGuide
 
-		filterOnSale.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16).isActive = true
-		filterOnSale.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
-		filterOnSale.heightAnchor.constraint(equalToConstant: 50).isActive = true
-		filterOnSale.widthAnchor.constraint(equalToConstant: 150).isActive = true
+		filterButton.topAnchor.constraint(equalTo: margins.topAnchor, constant: 16).isActive = true
+		filterButton.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
+		filterButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+		filterButton.widthAnchor.constraint(equalToConstant: 150).isActive = true
 
-		tableView.topAnchor.constraint(equalTo: filterOnSale.bottomAnchor, constant: 16).isActive = true
+		tableView.topAnchor.constraint(equalTo: filterButton.bottomAnchor, constant: 16).isActive = true
 		tableView.trailingAnchor.constraint(equalTo: margins.trailingAnchor).isActive = true
 		tableView.leadingAnchor.constraint(equalTo: margins.leadingAnchor).isActive = true
 		tableView.heightAnchor.constraint(greaterThanOrEqualToConstant: 420).isActive = true
@@ -129,15 +137,13 @@ extension CartViewController {
 
 extension CartViewController: ProductCartCellDelegate {
 	func addToCart(product: Product) {
-		interactor.addProduct()
+		interactor.addProduct(product: product)
 	}
 
 	func removeFromCart(product: Product) {
-		interactor.removeProduct()
+		interactor.removeProduct(product: product)
 	}
 
 	func deleteFromCart(product: Product) {
 	}
-
-
 }

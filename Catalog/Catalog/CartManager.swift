@@ -7,14 +7,21 @@
 
 import Foundation
 
-protocol CartManaging {
+protocol CartManaging: AnyObject {
 	func addProduct(product: Product)
-	func deleteProduct(product: Product)
-	func getProducts() -> [Product]
+	func removeProduct(product: Product)
+	func toggleState()
+	func getProducts()->[Product]
+}
+
+enum FilterType {
+	case all
+	case onSale
 }
 
 class CartManager: CartManaging {
 	private var products: [Product]
+	private var filter: FilterType = .all
 	static public var shared = CartManager()
 
 	init(products: [Product] = []) {
@@ -23,17 +30,30 @@ class CartManager: CartManaging {
 
 	func addProduct(product: Product) {
 		products.append(product)
-		print("Product added: ", product.name)
 	}
 
-	func deleteProduct(product: Product) {
+	func removeProduct(product: Product) {
 		products.removeAll { product in
 			return product == product
 		}
 	}
 
-	func getProducts() -> [Product] {
-		return products
+	func toggleState() {
+		filter = filter == .all ? .onSale : .all
 	}
 
+	private func getOnSaleProducts() -> [Product] {
+		return products.filter { product in
+			return product.onSale
+		}
+	}
+
+	func getProducts() -> [Product] {
+		switch filter {
+			case .all:
+				return products
+			case .onSale:
+				return getOnSaleProducts()
+		}
+	}
 }

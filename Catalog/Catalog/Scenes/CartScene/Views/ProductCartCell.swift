@@ -14,11 +14,9 @@ protocol ProductCartCellDelegate: AnyObject {
 }
 
 class ProductCartCell: UITableViewCell {
-
 	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
 	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
 	lazy var countLabel: UILabel = getUILabel(fontSize: 14, fontWeight: .regular)
-
 	lazy var productImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -110,10 +108,6 @@ class ProductCartCell: UITableViewCell {
 	required init?(coder: NSCoder) {
 		super.init(coder: coder)
 		configureViews()
-	}
-
-	override func awakeFromNib() {
-		super.awakeFromNib()
 	}
 
 	override func setSelected(_ selected: Bool, animated: Bool) {
