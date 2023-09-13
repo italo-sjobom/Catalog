@@ -32,6 +32,7 @@ class ProductCell: UITableViewCell {
 		stackView.contentMode = .scaleAspectFit
 		stackView.distribution = .fillEqually
 		stackView.addArrangedSubview(nameLabel)
+		stackView.addArrangedSubview(onSaleLabel)
 		stackView.addArrangedSubview(priceStackView)
 		stackView.addArrangedSubview(sizesStackView)
 		return stackView
@@ -42,9 +43,10 @@ class ProductCell: UITableViewCell {
 		stackView.axis = .horizontal
 		stackView.clipsToBounds = true
 		stackView.contentMode = .scaleAspectFit
-		stackView.distribution = .fill
+		stackView.distribution = .fillEqually
 		stackView.spacing = 4
 		stackView.addArrangedSubview(priceLabel)
+		stackView.addArrangedSubview(promotionalPriceLabel)
 		return stackView
 	}()
 	lazy var sizesStackView: UIStackView = {
@@ -81,7 +83,7 @@ class ProductCell: UITableViewCell {
 	}
 
 	private var task: URLSessionDataTask?
-	private var onSale: Bool = false
+//	private var onSale: Bool = false
 	private var product: Product!
 	weak var delegate: ProductCellDelegate?
 
@@ -106,6 +108,9 @@ class ProductCell: UITableViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		nameLabel.text = ""
+		priceLabel.text = ""
+		priceLabel.attributedText = NSAttributedString()
+		promotionalPriceLabel.text = ""
 		task?.cancel()
 	}
 
@@ -135,8 +140,13 @@ class ProductCell: UITableViewCell {
 	func setupCell(product: Product) {
 		nameLabel.text = product.name
 		priceLabel.text = product.price
-		promotionalPriceLabel.text = product.promotionalPrice
-		self.onSale = product.onSale
+		if product.onSale {
+			promotionalPriceLabel.text = product.promotionalPrice
+			priceLabel.attributedText = NSAttributedString.getStrikethroughAttributedString(string: product.price, widthLine: 1)
+			onSaleLabel.isHidden = false
+		} else {
+			onSaleLabel.isHidden = true
+		}
 		setupImage(urlString: product.imageURL ?? "")
 		self.product = product
 	}

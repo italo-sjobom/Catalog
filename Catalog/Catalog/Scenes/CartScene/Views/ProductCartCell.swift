@@ -17,7 +17,7 @@ class ProductCartCell: UITableViewCell {
 	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
 	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
 	lazy var countLabel: UILabel = getUILabel(fontSize: 14, fontWeight: .regular)
-	lazy var productImage: UIImageView = {
+	lazy var productImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.clipsToBounds = true
@@ -121,15 +121,15 @@ class ProductCartCell: UITableViewCell {
 	}
 
 	func configureViews() {
-		contentView.addSubview(productImage)
+		contentView.addSubview(productImageView)
 		contentView.addSubview(infoStackView)
 
-		productImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
-		productImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-		productImage.heightAnchor.constraint(equalToConstant: 100).isActive = true
-		productImage.widthAnchor.constraint(equalToConstant: 100).isActive = true
+		productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
+		productImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
+		productImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+		productImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
 
-		infoStackView.leadingAnchor.constraint(equalTo: productImage.trailingAnchor, constant: 16).isActive = true
+		infoStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 16).isActive = true
 		infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		infoStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 	}
@@ -147,7 +147,7 @@ class ProductCartCell: UITableViewCell {
 			task = URLSession.shared.dataTask(with: url) { data, _, error in
 				if error == nil, let data = data, let image = UIImage(data: data) {
 					DispatchQueue.main.async { [weak self] in
-						self?.productImage.image = image
+						self?.productImageView.image = image
 					}
 				}
 			}
