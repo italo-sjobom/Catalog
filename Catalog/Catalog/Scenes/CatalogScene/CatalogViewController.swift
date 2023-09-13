@@ -113,6 +113,7 @@ extension CatalogViewController {
 
 	func displayError(description: String) {
 		displayAlert(title: "Ops, ocorreu um erro", message: description)
+		reloadUI()
 	}
 }
 

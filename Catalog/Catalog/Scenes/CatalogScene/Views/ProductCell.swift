@@ -66,13 +66,13 @@ class ProductCell: UITableViewCell {
 		stackView.contentMode = .scaleAspectFit
 		stackView.distribution = .equalSpacing
 		stackView.addArrangedSubview(addButton)
-		stackView.backgroundColor = .red
 		return stackView
 	}()
 	lazy var addButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("Add", for: .normal)
 		button.backgroundColor = .blue
+		button.layer.cornerRadius = 12
 		button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
 		return button
 	}()
@@ -83,7 +83,6 @@ class ProductCell: UITableViewCell {
 	}
 
 	private var task: URLSessionDataTask?
-//	private var onSale: Bool = false
 	private var product: Product!
 	weak var delegate: ProductCellDelegate?
 
@@ -133,8 +132,6 @@ class ProductCell: UITableViewCell {
 		buttonStackView.widthAnchor.constraint(equalToConstant: 60).isActive = true
 		buttonStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
 		buttonStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
-
-
 	}
 
 	func setupCell(product: Product) {
