@@ -77,7 +77,8 @@ class ProductCartCell: UITableViewCell {
 	}()
 	lazy var deleteButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("X", for: .normal)
+		button.setImage(UIImage(systemName: "trash"), for: .normal)
+		button.setImage(UIImage(systemName: "trash.fill"), for: .highlighted)
 		button.addTarget(self, action: #selector(deleteFromCart), for: .touchUpInside)
 		return button
 	}()
