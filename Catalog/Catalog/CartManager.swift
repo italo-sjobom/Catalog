@@ -42,9 +42,7 @@ class CartManager: CartManaging {
 	}
 
 	func removeProduct(product: Product) {
-		products.removeAll { product in
-			return product == product
-		}
+		products = products.filter {$0 != product}
 	}
 
 	func toggleState() {
