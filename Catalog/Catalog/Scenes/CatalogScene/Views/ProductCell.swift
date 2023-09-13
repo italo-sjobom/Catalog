@@ -70,8 +70,8 @@ class ProductCell: UITableViewCell {
 	}()
 	lazy var addButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("Add", for: .normal)
-		button.backgroundColor = .blue
+		button.setImage(UIImage(systemName: "cart.badge.plus"), for: .normal)
+		button.setImage(UIImage(systemName: "cart.fill.badge.plus"), for: .selected)
 		button.layer.cornerRadius = 12
 		button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
 		return button
@@ -107,8 +107,7 @@ class ProductCell: UITableViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		nameLabel.text = ""
-		priceLabel.text = ""
-		priceLabel.attributedText = NSAttributedString()
+		priceLabel.attributedText = NSAttributedString(string: "")
 		promotionalPriceLabel.text = ""
 		task?.cancel()
 	}

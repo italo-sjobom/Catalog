@@ -43,7 +43,7 @@ final class CatalogViewController: UIViewController {
 		title = "Catalog"
 		configureViews()
 		loadData()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cart", style: .plain, target: self, action: #selector(displayCart))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .plain, target: self, action: #selector(displayCart))
 	}
 
 	override func loadView() {

@@ -17,6 +17,7 @@ class ProductCartCell: UITableViewCell {
 	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
 	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
 	lazy var countLabel: UILabel = getUILabel(fontSize: 14, fontWeight: .regular)
+	lazy var promotionalPriceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .bold)
 	lazy var productImageView: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,9 +43,10 @@ class ProductCartCell: UITableViewCell {
 		stackView.axis = .horizontal
 		stackView.clipsToBounds = true
 		stackView.contentMode = .scaleAspectFit
-		stackView.distribution = .fill
+		stackView.distribution = .fillEqually
 		stackView.spacing = 4
 		stackView.addArrangedSubview(priceLabel)
+		stackView.addArrangedSubview(promotionalPriceLabel)
 		return stackView
 	}()
 	lazy var buttonStackView: UIStackView = {
@@ -53,31 +55,29 @@ class ProductCartCell: UITableViewCell {
 		stackView.axis = .horizontal
 		stackView.clipsToBounds = true
 		stackView.contentMode = .scaleAspectFit
-		stackView.distribution = .equalSpacing
+		stackView.distribution = .equalCentering
 		stackView.addArrangedSubview(removeButton)
 		stackView.addArrangedSubview(countLabel)
 		stackView.addArrangedSubview(addButton)
-		stackView.backgroundColor = .red
 		return stackView
 	}()
 	lazy var addButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("+", for: .normal)
-		button.backgroundColor = .blue
+		button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
+		button.setImage(UIImage(systemName: "plus.circle.fill"), for: .highlighted)
 		button.addTarget(self, action: #selector(addToCart), for: .touchUpInside)
 		return button
 	}()
 	lazy var removeButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("-", for: .normal)
-		button.backgroundColor = .blue
+		button.setImage(UIImage(systemName: "minus.circle"), for: .normal)
+		button.setImage(UIImage(systemName: "minus.circle.fill"), for: .highlighted)
 		button.addTarget(self, action: #selector(removeFromCart), for: .touchUpInside)
 		return button
 	}()
 	lazy var deleteButton: UIButton = {
 		let button = UIButton()
 		button.setTitle("X", for: .normal)
-		button.backgroundColor = .blue
 		button.addTarget(self, action: #selector(deleteFromCart), for: .touchUpInside)
 		return button
 	}()
@@ -132,11 +132,16 @@ class ProductCartCell: UITableViewCell {
 		infoStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 16).isActive = true
 		infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		infoStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+		infoStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
 	}
 
 	func setupCell(product: Product) {
 		nameLabel.text = product.name
 		priceLabel.text = product.onSale ? product.promotionalPrice : product.price
+		if product.onSale {
+			promotionalPriceLabel.text = product.promotionalPrice
+			priceLabel.attributedText = NSAttributedString.getStrikethroughAttributedString(string: product.price, widthLine: 1)
+		}
 		setupImage(urlString: product.imageURL ?? "")
 		countLabel.text = "1"
 		self.product = product
