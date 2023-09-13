@@ -17,7 +17,6 @@ final class CartViewController: UIViewController {
 		tableView.register(ProductCartCell.self, forCellReuseIdentifier: String(describing: ProductCartCell.self))
 		tableView.rowHeight = 120
 		tableView.tableFooterView = UIView()
-		tableView.backgroundColor = .cyan
 		return tableView
 	}()
 	lazy var activity: UIActivityIndicatorView = {
@@ -29,9 +28,8 @@ final class CartViewController: UIViewController {
 	lazy var totalLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = "TOTAL: R$"
+		label.text = "TOTAL: R$ "
 		label.font = UIFont.systemFont(ofSize: 14, weight: .bold)
-		label.backgroundColor = .blue
 		return label
 	}()
 	lazy var filterButton: UIButton = {
@@ -59,6 +57,7 @@ final class CartViewController: UIViewController {
 		super.viewDidLoad()
 		title = "Cart"
 		configureViews()
+		interactor.calculateTotalCartPrice()
 	}
 
 	override func loadView() {
@@ -70,6 +69,7 @@ final class CartViewController: UIViewController {
 
 	@objc func filterAction() {
 		interactor.toggleState()
+		interactor.calculateTotalCartPrice()
 	}
 
 	func displayProducts(products: [Product]) {
@@ -80,6 +80,11 @@ final class CartViewController: UIViewController {
 	func displayFilterButton(title: String) {
 		filterButton.setTitle(title, for: .normal)
 		filterButton.reloadInputViews()
+	}
+
+	func displayTotalCartPrice(value: Double) {
+		totalLabel.text = nil
+		totalLabel.text = "TOTAL: R$ " + String(format: "%.2f", value)
 	}
 }
 
@@ -139,12 +144,15 @@ extension CartViewController {
 extension CartViewController: ProductCartCellDelegate {
 	func addToCart(product: Product) {
 		interactor.addProduct(product: product)
+		interactor.calculateTotalCartPrice()
 	}
 
 	func removeFromCart(product: Product) {
 		interactor.removeProduct(product: product)
+		interactor.calculateTotalCartPrice()
 	}
 
 	func deleteFromCart(product: Product) {
+		interactor.calculateTotalCartPrice()
 	}
 }

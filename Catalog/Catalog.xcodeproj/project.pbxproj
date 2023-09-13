@@ -31,6 +31,7 @@
 		E9B032CD2AB0B8F9003F97F7 /* ProductCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */; };
 		E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */; };
 		E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D42AB23BA5003F97F7 /* UILabel.swift */; };
+		E9B032D72AB24828003F97F7 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D62AB24828003F97F7 /* Formatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCartCell.swift; sourceTree = "<group>"; };
 		E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+StrikethroughStyle.swift"; sourceTree = "<group>"; };
 		E9B032D42AB23BA5003F97F7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
+		E9B032D62AB24828003F97F7 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +234,7 @@
 			children = (
 				E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */,
 				E9B032D42AB23BA5003F97F7 /* UILabel.swift */,
+				E9B032D62AB24828003F97F7 /* Formatter.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 			files = (
 				E9B032C12AAF81FA003F97F7 /* CartPresenter.swift in Sources */,
 				E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */,
+				E9B032D72AB24828003F97F7 /* Formatter.swift in Sources */,
 				E904E3812AAE5594007F7826 /* Size.swift in Sources */,
 				E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */,
 				E904E37F2AAE542A007F7826 /* Product.swift in Sources */,

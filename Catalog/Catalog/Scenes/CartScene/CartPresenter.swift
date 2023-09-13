@@ -11,6 +11,7 @@ protocol CartPresenting {
 	func presentProduct()
 	func presentFilteredProducts(products: [Product])
 	func presentFilterButton(title: String)
+	func presentTotalCartPrice(value: Double)
 }
 
 final class CartPresenter: CartPresenting {
@@ -26,5 +27,9 @@ final class CartPresenter: CartPresenting {
 
 	func presentFilterButton(title: String) {
 		viewController?.displayFilterButton(title: title)
+	}
+
+	func presentTotalCartPrice(value: Double) {
+		viewController?.displayTotalCartPrice(value: value)
 	}
 }

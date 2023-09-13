@@ -12,6 +12,7 @@ protocol CartInteracting {
 	func removeProduct(product: Product)
 	func openProduct(product: Product)
 	func toggleState()
+	func calculateTotalCartPrice()
 }
 
 final class CartInteractor: CartInteracting {
@@ -33,6 +34,10 @@ final class CartInteractor: CartInteracting {
 
 	func openProduct(product: Product) {
 
+	}
+
+	func calculateTotalCartPrice() {
+		presenter.presentTotalCartPrice(value: cartManager.getTotalCartPrice())
 	}
 
 	func toggleState() {

@@ -13,6 +13,7 @@ protocol CartManaging: AnyObject {
 	func toggleState()
 	func getProducts() -> [Product]
 	func getCurrentFilter() -> FilterType
+	func getTotalCartPrice() -> Double
 }
 
 enum FilterType {
@@ -67,5 +68,16 @@ class CartManager: CartManaging {
 
 	func getCurrentFilter() -> FilterType {
 		return filter
+	}
+
+	func getTotalCartPrice() -> Double {
+		var sum: Double = 0
+		getProducts().forEach { product in
+			let valueString = product.onSale ? product.promotionalPrice : product.price
+			if let number = Formatter.convertReaisStringToDouble(valueString: valueString) {
+				sum += number
+			}
+		}
+		return sum
 	}
 }
