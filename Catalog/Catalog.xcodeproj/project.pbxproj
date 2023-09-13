@@ -30,6 +30,7 @@
 		E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C42AAFD42A003F97F7 /* CartManager.swift */; };
 		E9B032CD2AB0B8F9003F97F7 /* ProductCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */; };
 		E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */; };
+		E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D42AB23BA5003F97F7 /* UILabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		E9B032C42AAFD42A003F97F7 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCartCell.swift; sourceTree = "<group>"; };
 		E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+StrikethroughStyle.swift"; sourceTree = "<group>"; };
+		E9B032D42AB23BA5003F97F7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */,
+				E9B032D42AB23BA5003F97F7 /* UILabel.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				E904E37F2AAE542A007F7826 /* Product.swift in Sources */,
 				E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */,
 				E9B032BD2AAF7FCF003F97F7 /* CartViewController.swift in Sources */,
+				E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */,
 				E9B032C32AAF8203003F97F7 /* CartFactory.swift in Sources */,
 				E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */,
 				E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */,

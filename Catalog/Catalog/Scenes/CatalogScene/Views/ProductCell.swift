@@ -13,10 +13,10 @@ protocol ProductCellDelegate: AnyObject {
 
 class ProductCell: UITableViewCell {
 
-	lazy var nameLabel: UILabel = getUILabel(fontSize: 12, fontWeight: .regular)
-	lazy var priceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .regular)
-	lazy var promotionalPriceLabel: UILabel = getUILabel(fontSize: 10, fontWeight: .bold)
-	lazy var onSaleLabel: UILabel = getUILabel(text: "On Sale", fontSize: 12, fontWeight: .heavy)
+	lazy var nameLabel: UILabel = UILabel.getUILabel(fontSize: 12, fontWeight: .regular)
+	lazy var priceLabel: UILabel = UILabel.getUILabel(fontSize: 10, fontWeight: .regular)
+	lazy var promotionalPriceLabel: UILabel = UILabel.getUILabel(fontSize: 10, fontWeight: .bold)
+	lazy var onSaleLabel: UILabel = UILabel.getUILabel(text: "On Sale", fontSize: 12, fontWeight: .heavy)
 	lazy var productImage: UIImageView = {
 		let imageView = UIImageView()
 		imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -158,13 +158,5 @@ class ProductCell: UITableViewCell {
 			}
 			task?.resume()
 		}
-	}
-
-	private func getUILabel(text: String = "", fontSize: CGFloat, fontWeight: UIFont.Weight) -> UILabel {
-		let label = UILabel()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		label.text = text
-		label.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
-		return label
 	}
 }
