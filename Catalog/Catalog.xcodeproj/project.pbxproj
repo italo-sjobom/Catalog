@@ -29,6 +29,7 @@
 		E9B032C32AAF8203003F97F7 /* CartFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C22AAF8203003F97F7 /* CartFactory.swift */; };
 		E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032C42AAFD42A003F97F7 /* CartManager.swift */; };
 		E9B032CD2AB0B8F9003F97F7 /* ProductCartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */; };
+		E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		E9B032C22AAF8203003F97F7 /* CartFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartFactory.swift; sourceTree = "<group>"; };
 		E9B032C42AAFD42A003F97F7 /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCartCell.swift; sourceTree = "<group>"; };
+		E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+StrikethroughStyle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +127,7 @@
 		E904E14F2AAE50E5007F7826 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E9B032D12AB20A6B003F97F7 /* Extensions */,
 				E9B030B02AAE80FE003F97F7 /* Scenes */,
 				E904E38B2AAE6988007F7826 /* Services */,
 				E904E1802AAE5130007F7826 /* Models */,
@@ -220,6 +223,14 @@
 				E9B032CC2AB0B8F9003F97F7 /* ProductCartCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		E9B032D12AB20A6B003F97F7 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -365,6 +376,7 @@
 				E9B032CD2AB0B8F9003F97F7 /* ProductCartCell.swift in Sources */,
 				E9B032BA2AAEA316003F97F7 /* CatalogFactory.swift in Sources */,
 				E904E1512AAE50E5007F7826 /* AppDelegate.swift in Sources */,
+				E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */,
 				E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */,
 				E9B032BF2AAF81EC003F97F7 /* CartInteractor.swift in Sources */,
 				E9B030BB2AAEA0EB003F97F7 /* CatalogPresenter.swift in Sources */,
