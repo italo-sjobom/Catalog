@@ -56,7 +56,6 @@ class ProductCartCell: UITableViewCell {
 		stackView.clipsToBounds = true
 		stackView.contentMode = .scaleAspectFit
 		stackView.distribution = .equalCentering
-		stackView.addArrangedSubview(removeButton)
 		stackView.addArrangedSubview(countLabel)
 		stackView.addArrangedSubview(addButton)
 		return stackView
@@ -85,6 +84,13 @@ class ProductCartCell: UITableViewCell {
 		button.addTarget(self, action: #selector(removeFromCart), for: .touchUpInside)
 		return button
 	}()
+	lazy var deleteStackButton: UIButton = {
+		let button = UIButton()
+		button.setImage(UIImage(systemName: "trash.circle"), for: .normal)
+		button.setImage(UIImage(systemName: "trash.circle.fill"), for: .highlighted)
+		button.addTarget(self, action: #selector(deleteFromCart), for: .touchUpInside)
+		return button
+	}()
 	lazy var deleteButton: UIButton = {
 		let button = UIButton()
 		button.setImage(UIImage(systemName: "trash"), for: .normal)
@@ -107,7 +113,6 @@ class ProductCartCell: UITableViewCell {
 	}
 
 	private var task: URLSessionDataTask?
-	private var onSale: Bool = false
 	private var product: Product!
 	weak var delegate: ProductCartCellDelegate?
 
@@ -128,6 +133,8 @@ class ProductCartCell: UITableViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		nameLabel.text = ""
+		priceLabel.attributedText = NSAttributedString(string: "")
+		promotionalPriceLabel.text = ""
 		task?.cancel()
 	}
 
@@ -162,6 +169,13 @@ class ProductCartCell: UITableViewCell {
 		setupImage(urlString: product.imageURL ?? "")
 		countLabel.text = String(count)
 		self.product = product
+		if count == 1 {
+			removeButton.removeFromSuperview()
+			buttonStackView.insertArrangedSubview(deleteStackButton, at: 0)
+		} else {
+			deleteStackButton.removeFromSuperview()
+			buttonStackView.insertArrangedSubview(removeButton, at: 0)
+		}
 	}
 
 	private func setupImage(urlString: String) {
