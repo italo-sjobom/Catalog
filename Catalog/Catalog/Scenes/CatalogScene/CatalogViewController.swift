@@ -15,7 +15,7 @@ final class CatalogViewController: UIViewController {
 		tableView.delegate = self
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.backgroundView = activity
-		tableView.register(ProductCell.self, forCellReuseIdentifier: String(describing: ProductCell.self))
+		tableView.register(ProductCatalogCell.self, forCellReuseIdentifier: String(describing: ProductCatalogCell.self))
 		tableView.rowHeight = 120
 		tableView.tableFooterView = UIView()
 		return tableView
@@ -60,7 +60,7 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCell.self), for: indexPath) as? ProductCell else {
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCatalogCell.self), for: indexPath) as? ProductCatalogCell else {
 			return UITableViewCell()
 		}
 

@@ -18,7 +18,7 @@
 		E904E3812AAE5594007F7826 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E3802AAE5594007F7826 /* Size.swift */; };
 		E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E38C2AAE69B0007F7826 /* CatalogService.swift */; };
 		E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */; };
-		E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B42AAE8132003F97F7 /* ProductCell.swift */; };
+		E9B030B62AAE8132003F97F7 /* ProductCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B42AAE8132003F97F7 /* ProductCatalogCell.swift */; };
 		E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */; };
 		E9B030B92AAEA0CD003F97F7 /* CatalogInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B82AAEA0CD003F97F7 /* CatalogInteractor.swift */; };
 		E9B030BB2AAEA0EB003F97F7 /* CatalogPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030BA2AAEA0EB003F97F7 /* CatalogPresenter.swift */; };
@@ -32,6 +32,7 @@
 		E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */; };
 		E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D42AB23BA5003F97F7 /* UILabel.swift */; };
 		E9B032D72AB24828003F97F7 /* Formatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B032D62AB24828003F97F7 /* Formatter.swift */; };
+		E9BBB3662AB3C0B400954EF0 /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBB3652AB3C0B400954EF0 /* ProductCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +68,7 @@
 		E904E3802AAE5594007F7826 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E904E38C2AAE69B0007F7826 /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
 		E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
-		E9B030B42AAE8132003F97F7 /* ProductCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
+		E9B030B42AAE8132003F97F7 /* ProductCatalogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCatalogCell.swift; sourceTree = "<group>"; };
 		E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
 		E9B030B82AAEA0CD003F97F7 /* CatalogInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogInteractor.swift; sourceTree = "<group>"; };
 		E9B030BA2AAEA0EB003F97F7 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
@@ -81,6 +82,7 @@
 		E9B032D22AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+StrikethroughStyle.swift"; sourceTree = "<group>"; };
 		E9B032D42AB23BA5003F97F7 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		E9B032D62AB24828003F97F7 /* Formatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatter.swift; sourceTree = "<group>"; };
+		E9BBB3652AB3C0B400954EF0 /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +133,7 @@
 		E904E14F2AAE50E5007F7826 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E9BBB3642AB3C09B00954EF0 /* Views */,
 				E9B032D12AB20A6B003F97F7 /* Extensions */,
 				E9B030B02AAE80FE003F97F7 /* Scenes */,
 				E904E38B2AAE6988007F7826 /* Services */,
@@ -204,7 +207,7 @@
 		E9B030B32AAE8132003F97F7 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				E9B030B42AAE8132003F97F7 /* ProductCell.swift */,
+				E9B030B42AAE8132003F97F7 /* ProductCatalogCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -237,6 +240,14 @@
 				E9B032D62AB24828003F97F7 /* Formatter.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9BBB3642AB3C09B00954EF0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E9BBB3652AB3C0B400954EF0 /* ProductCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -370,6 +381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9B032C12AAF81FA003F97F7 /* CartPresenter.swift in Sources */,
+				E9BBB3662AB3C0B400954EF0 /* ProductCell.swift in Sources */,
 				E9B032C52AAFD42A003F97F7 /* CartManager.swift in Sources */,
 				E9B032D72AB24828003F97F7 /* Formatter.swift in Sources */,
 				E904E3812AAE5594007F7826 /* Size.swift in Sources */,
@@ -379,7 +391,7 @@
 				E9B032BD2AAF7FCF003F97F7 /* CartViewController.swift in Sources */,
 				E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */,
 				E9B032C32AAF8203003F97F7 /* CartFactory.swift in Sources */,
-				E9B030B62AAE8132003F97F7 /* ProductCell.swift in Sources */,
+				E9B030B62AAE8132003F97F7 /* ProductCatalogCell.swift in Sources */,
 				E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */,
 				E9B032CD2AB0B8F9003F97F7 /* ProductCartCell.swift in Sources */,
 				E9B032BA2AAEA316003F97F7 /* CatalogFactory.swift in Sources */,
