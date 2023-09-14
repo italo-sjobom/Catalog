@@ -109,6 +109,9 @@ class ProductCell: UITableViewCell {
 		nameLabel.text = ""
 		priceLabel.attributedText = NSAttributedString(string: "")
 		promotionalPriceLabel.text = ""
+		sizesStackView.subviews.forEach { v in
+			v.removeFromSuperview()
+		}
 		task?.cancel()
 	}
 
@@ -145,6 +148,13 @@ class ProductCell: UITableViewCell {
 		}
 		setupImage(urlString: product.imageURL ?? "")
 		self.product = product
+		product.sizes.forEach { size in
+			if size.available {
+				let label = UILabel()
+				label.text = size.size
+				sizesStackView.addArrangedSubview(label)
+			}
+		}
 	}
 
 	private func setupImage(urlString: String) {
