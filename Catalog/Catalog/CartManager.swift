@@ -8,9 +8,9 @@
 import Foundation
 
 protocol CartManaging: AnyObject {
-	func addProduct(product: Product)
-	func removeProduct(product: Product)
-	func deleteProduct(product: Product)
+	func addProduct(product: Product) -> [Product]
+	func removeProduct(product: Product) -> [Product]
+	func deleteProduct(product: Product) -> [Product]
 	func toggleState()
 	func getProducts() -> [Product]
 	func getCurrentFilter() -> FilterType
@@ -34,28 +34,31 @@ class CartManager: CartManaging {
 	private var filter: FilterType = .all
 	static public var shared = CartManager()
 
-	init(productsDictionary: [Product: Int] = [:], products: [Product] = []) {
+	init(productsDictionary: [Product: Int] = [:]) {
 		self.productsDictionary = productsDictionary
 	}
 
-	func addProduct(product: Product) {
+	func addProduct(product: Product) -> [Product] {
 		if productsDictionary[product] != nil {
 			productsDictionary[product]! += 1
 		} else {
 			productsDictionary[product] = 1
 		}
+		return getProducts()
  	}
 
-	func removeProduct(product: Product) {
+	func removeProduct(product: Product) -> [Product] {
 		if let productCount = productsDictionary[product], productCount > 1 {
 			productsDictionary[product]! -= 1
 		} else {
-			deleteProduct(product: product)
+			return deleteProduct(product: product)
 		}
+		return getProducts()
 	}
 
-	func deleteProduct(product: Product) {
+	func deleteProduct(product: Product) -> [Product] {
 		productsDictionary = productsDictionary.filter { $0.key != product }
+		return getProducts()
 	}
 
 	func toggleState() {

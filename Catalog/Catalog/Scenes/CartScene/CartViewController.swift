@@ -79,7 +79,6 @@ final class CartViewController: UIViewController {
 
 	func displayFilterButton(title: String) {
 		filterButton.setTitle(title, for: .normal)
-		filterButton.reloadInputViews()
 	}
 
 	func displayTotalCartPrice(value: Double) {
@@ -143,16 +142,17 @@ extension CartViewController {
 
 extension CartViewController: ProductCartCellDelegate {
 	func addToCart(product: Product) {
-		interactor.addProduct(product: product)
+		interactor.add(product: product)
 		interactor.calculateTotalCartPrice()
 	}
 
 	func removeFromCart(product: Product) {
-		interactor.removeProduct(product: product)
+		interactor.remove(product: product)
 		interactor.calculateTotalCartPrice()
 	}
 
 	func deleteFromCart(product: Product) {
+		interactor.delete(product: product)
 		interactor.calculateTotalCartPrice()
 	}
 }

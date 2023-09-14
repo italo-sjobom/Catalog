@@ -8,8 +8,8 @@
 import Foundation
 
 protocol CartPresenting {
-	func presentProduct()
-	func presentFilteredProducts(products: [Product])
+	func present(product: Product)
+	func present(products: [Product])
 	func presentFilterButton(title: String)
 	func presentTotalCartPrice(value: Double)
 }
@@ -17,11 +17,11 @@ protocol CartPresenting {
 final class CartPresenter: CartPresenting {
 	weak var viewController: CartViewController?
 	
-	func presentProduct() {
+	func present(product: Product) {
 		
 	}
 
-	func presentFilteredProducts(products: [Product]) {
+	func present(products: [Product]) {
 		viewController?.displayProducts(products: products)
 	}
 
