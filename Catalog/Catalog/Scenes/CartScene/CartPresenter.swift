@@ -9,7 +9,7 @@ import Foundation
 
 protocol CartPresenting {
 	func present(product: Product)
-	func present(products: [Product])
+	func present(products: [Product: Int])
 	func presentFilterButton(title: String)
 	func presentTotalCartPrice(value: Double)
 }
@@ -21,7 +21,7 @@ final class CartPresenter: CartPresenting {
 		
 	}
 
-	func present(products: [Product]) {
+	func present(products: [Product: Int]) {
 		viewController?.displayProducts(products: products)
 	}
 

@@ -8,11 +8,11 @@
 import Foundation
 
 protocol CartManaging: AnyObject {
-	func addProduct(product: Product) -> [Product]
-	func removeProduct(product: Product) -> [Product]
-	func deleteProduct(product: Product) -> [Product]
+	func add(product: Product) -> [Product: Int]
+	func remove(product: Product) -> [Product: Int]
+	func delete(product: Product) -> [Product: Int]
 	func toggleState()
-	func getProducts() -> [Product]
+	func getProducts() -> [Product: Int]
 	func getCurrentFilter() -> FilterType
 	func getTotalCartPrice() -> Double
 }
@@ -38,7 +38,7 @@ class CartManager: CartManaging {
 		self.productsDictionary = productsDictionary
 	}
 
-	func addProduct(product: Product) -> [Product] {
+	func add(product: Product) -> [Product: Int] {
 		if productsDictionary[product] != nil {
 			productsDictionary[product]! += 1
 		} else {
@@ -47,16 +47,16 @@ class CartManager: CartManaging {
 		return getProducts()
  	}
 
-	func removeProduct(product: Product) -> [Product] {
+	func remove(product: Product) -> [Product: Int] {
 		if let productCount = productsDictionary[product], productCount > 1 {
 			productsDictionary[product]! -= 1
 		} else {
-			return deleteProduct(product: product)
+			return delete(product: product)
 		}
 		return getProducts()
 	}
 
-	func deleteProduct(product: Product) -> [Product] {
+	func delete(product: Product) -> [Product: Int] {
 		productsDictionary = productsDictionary.filter { $0.key != product }
 		return getProducts()
 	}
@@ -65,14 +65,14 @@ class CartManager: CartManaging {
 		filter = filter == .all ? .onSale : .all
 	}
 
-	private func getOnSaleProducts() -> [Product] {
-		return productsDictionary.keys.filter { $0.onSale }
+	private func getOnSaleProducts() -> [Product: Int] {
+		return productsDictionary.filter { $0.key.onSale }
 	}
 
-	func getProducts() -> [Product] {
+	func getProducts() -> [Product: Int] {
 		switch filter {
 			case .all:
-				return Array<Product>(productsDictionary.keys)
+				return productsDictionary
 			case .onSale:
 				return getOnSaleProducts()
 		}
@@ -85,7 +85,7 @@ class CartManager: CartManaging {
 	func getTotalCartPrice() -> Double {
 		var sum: Double = 0
 		getProducts().forEach { product in
-			let valueString = product.onSale ? product.promotionalPrice : product.price
+			let valueString = product.key.onSale ? product.key.promotionalPrice : product.key.price
 			if let number = Formatter.convertReaisStringToDouble(valueString: valueString) {
 				sum += number
 			}

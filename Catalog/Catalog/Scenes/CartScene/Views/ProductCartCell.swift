@@ -152,7 +152,7 @@ class ProductCartCell: UITableViewCell {
 		deleteButtonStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 	}
 
-	func setupCell(product: Product) {
+	func setupCell(product: Product, count: Int) {
 		nameLabel.text = product.name
 		priceLabel.text = product.onSale ? product.promotionalPrice : product.price
 		if product.onSale {
@@ -160,7 +160,7 @@ class ProductCartCell: UITableViewCell {
 			priceLabel.attributedText = NSAttributedString.getStrikethroughAttributedString(string: product.price, widthLine: 1)
 		}
 		setupImage(urlString: product.imageURL ?? "")
-		countLabel.text = "1"
+		countLabel.text = String(count)
 		self.product = product
 	}
 

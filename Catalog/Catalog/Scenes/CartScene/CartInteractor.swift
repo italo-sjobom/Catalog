@@ -26,15 +26,15 @@ final class CartInteractor: CartInteracting {
 	}
 
 	func add(product: Product) {
-		presenter.present(products: cartManager.addProduct(product: product))
+		presenter.present(products: cartManager.add(product: product))
 	}
 
 	func remove(product: Product) {
-		presenter.present(products: cartManager.removeProduct(product: product))
+		presenter.present(products: cartManager.remove(product: product))
 	}
 
 	func delete(product: Product) {
-		presenter.present(products: cartManager.deleteProduct(product: product))
+		presenter.present(products: cartManager.delete(product: product))
 	}
 
 	func open(product: Product) {

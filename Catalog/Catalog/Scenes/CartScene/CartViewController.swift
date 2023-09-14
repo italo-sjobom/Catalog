@@ -41,9 +41,9 @@ final class CartViewController: UIViewController {
 		return button
 	}()
 	private let interactor: CartInteracting
-	private var products: [Product]
+	private var products: [Product: Int]
 
-	init(interactor: CartInteracting, products: [Product]) {
+	init(interactor: CartInteracting, products: [Product: Int]) {
 		self.interactor = interactor
 		self.products = products
 		super.init(nibName: nil, bundle: nil)
@@ -72,7 +72,7 @@ final class CartViewController: UIViewController {
 		interactor.calculateTotalCartPrice()
 	}
 
-	func displayProducts(products: [Product]) {
+	func displayProducts(products: [Product: Int]) {
 		self.products = products
 		reloadUI()
 	}
@@ -97,9 +97,10 @@ extension CartViewController: UITableViewDataSource, UITableViewDelegate {
 		guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ProductCartCell.self), for: indexPath) as? ProductCartCell else {
 			return UITableViewCell()
 		}
-		let product = products[indexPath.row]
+		let product = Array<Product>(products.keys)[indexPath.row]
+		let productCount = products[product]
 		cell.delegate = self
-		cell.setupCell(product: product)
+		cell.setupCell(product: product, count: productCount ?? 0)
 		return cell
 	}
 

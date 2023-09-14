@@ -30,7 +30,7 @@ final class CatalogInteractor: CatalogInteracting {
 	}
 
 	func addToCart(product: Product) {
-		cartManager.addProduct(product: product)
+		cartManager.add(product: product)
 	}
 
 	func openProduct() {
