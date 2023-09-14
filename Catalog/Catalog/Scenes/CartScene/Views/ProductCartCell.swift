@@ -61,6 +61,16 @@ class ProductCartCell: UITableViewCell {
 		stackView.addArrangedSubview(addButton)
 		return stackView
 	}()
+	lazy var deleteButtonStackView: UIStackView = {
+		let stackView = UIStackView()
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.axis = .vertical
+		stackView.clipsToBounds = true
+		stackView.contentMode = .scaleAspectFit
+		stackView.distribution = .equalSpacing
+		stackView.addArrangedSubview(deleteButton)
+		return stackView
+	}()
 	lazy var addButton: UIButton = {
 		let button = UIButton()
 		button.setImage(UIImage(systemName: "plus.circle"), for: .normal)
@@ -124,6 +134,7 @@ class ProductCartCell: UITableViewCell {
 	func configureViews() {
 		contentView.addSubview(productImageView)
 		contentView.addSubview(infoStackView)
+		contentView.addSubview(deleteButtonStackView)
 
 		productImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16).isActive = true
 		productImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
@@ -133,7 +144,12 @@ class ProductCartCell: UITableViewCell {
 		infoStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 16).isActive = true
 		infoStackView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
 		infoStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
-		infoStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16).isActive = true
+
+		deleteButtonStackView.leadingAnchor.constraint(equalTo: infoStackView.trailingAnchor, constant: 4).isActive = true
+		deleteButtonStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -4).isActive = true
+		deleteButtonStackView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+		deleteButtonStackView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+		deleteButtonStackView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor).isActive = true
 	}
 
 	func setupCell(product: Product) {
