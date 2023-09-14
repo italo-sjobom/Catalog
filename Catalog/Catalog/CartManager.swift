@@ -10,6 +10,7 @@ import Foundation
 protocol CartManaging: AnyObject {
 	func addProduct(product: Product)
 	func removeProduct(product: Product)
+	func deleteProduct(product: Product)
 	func toggleState()
 	func getProducts() -> [Product]
 	func getCurrentFilter() -> FilterType
@@ -29,20 +30,32 @@ enum FilterType {
 }
 
 class CartManager: CartManaging {
-	private var products: [Product]
+	private var productsDictionary: [Product: Int]
 	private var filter: FilterType = .all
 	static public var shared = CartManager()
 
-	init(products: [Product] = []) {
-		self.products = products
+	init(productsDictionary: [Product: Int] = [:], products: [Product] = []) {
+		self.productsDictionary = productsDictionary
 	}
 
 	func addProduct(product: Product) {
-		products.append(product)
-	}
+		if productsDictionary[product] != nil {
+			productsDictionary[product]! += 1
+		} else {
+			productsDictionary[product] = 1
+		}
+ 	}
 
 	func removeProduct(product: Product) {
-		products = products.filter {$0 != product}
+		if let productCount = productsDictionary[product], productCount > 1 {
+			productsDictionary[product]! -= 1
+		} else {
+			deleteProduct(product: product)
+		}
+	}
+
+	func deleteProduct(product: Product) {
+		productsDictionary = productsDictionary.filter { $0.key != product }
 	}
 
 	func toggleState() {
@@ -50,15 +63,13 @@ class CartManager: CartManaging {
 	}
 
 	private func getOnSaleProducts() -> [Product] {
-		return products.filter { product in
-			return product.onSale
-		}
+		return productsDictionary.keys.filter { $0.onSale }
 	}
 
 	func getProducts() -> [Product] {
 		switch filter {
 			case .all:
-				return products
+				return Array<Product>(productsDictionary.keys)
 			case .onSale:
 				return getOnSaleProducts()
 		}
