@@ -19,7 +19,7 @@ final class CatalogInteractor: CatalogInteracting {
 	private let service: CatalogServicing
 	private let cartManager: CartManaging
 
-	init(presenter: CatalogPresenting, service: CatalogService, cartManager: CartManaging) {
+	init(presenter: CatalogPresenting, service: CatalogServicing, cartManager: CartManaging) {
 		self.presenter = presenter
 		self.service = service
 		self.cartManager = cartManager
@@ -30,7 +30,7 @@ final class CatalogInteractor: CatalogInteracting {
 	}
 
 	func addToCart(product: Product) {
-		cartManager.add(product: product)
+		let _ = cartManager.add(product: product)
 	}
 
 	func openProduct() {
@@ -40,13 +40,11 @@ final class CatalogInteractor: CatalogInteracting {
 	func fetchProducts() {
 		service.fetchProducts { [weak self] result in
 			guard let self = self else { return }
-			DispatchQueue.main.async {
-				switch result {
-					case .success(let productResponse):
-						self.presenter.presentProduct(products: productResponse.products)
-					case .failure(let error):
-						self.presenter.presentError(description: error.localizedDescription)
-				}
+			switch result {
+				case .success(let productResponse):
+					self.presenter.presentProducts(products: productResponse.products)
+				case .failure(let error):
+					self.presenter.presentError(description: error.localizedDescription)
 			}
 		}
 	}

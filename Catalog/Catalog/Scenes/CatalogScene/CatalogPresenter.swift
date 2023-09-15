@@ -9,7 +9,7 @@ import Foundation
 
 protocol CatalogPresenting {
 	func presentCart(cartManager: CartManaging)
-	func presentProduct(products: [Product])
+	func presentProducts(products: [Product])
 	func presentError(description: String)
 }
 
@@ -20,7 +20,7 @@ final class CatalogPresenter: CatalogPresenting {
 		viewController?.navigationController?.pushViewController(CartFactory.makeScene(cartManager: cartManager), animated: true)
 	}
 
-	func presentProduct(products: [Product]) {
+	func presentProducts(products: [Product]) {
 		viewController?.displayProducts(products: products)
 	}
 

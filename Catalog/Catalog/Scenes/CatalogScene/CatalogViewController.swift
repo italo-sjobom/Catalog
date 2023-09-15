@@ -107,13 +107,17 @@ extension CatalogViewController {
 	}
 
 	func displayProducts(products: [Product]) {
-		self.products = products
-		reloadUI()
+		DispatchQueue.main.async { [weak self] in
+			self?.products = products
+			self?.reloadUI()
+		}
 	}
 
 	func displayError(description: String) {
-		displayAlert(title: "Ops, ocorreu um erro", message: description)
-		reloadUI()
+		DispatchQueue.main.async { [weak self] in
+			self?.displayAlert(title: "Ops, ocorreu um erro", message: description)
+			self?.reloadUI()
+		}
 	}
 }
 
