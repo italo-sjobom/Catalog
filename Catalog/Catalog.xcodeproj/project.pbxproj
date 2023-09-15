@@ -145,6 +145,7 @@
 		E904E14F2AAE50E5007F7826 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E9BBB5752AB51EB300954EF0 /* Managers */,
 				E9BBB3642AB3C09B00954EF0 /* Views */,
 				E9B032D12AB20A6B003F97F7 /* Extensions */,
 				E9B030B02AAE80FE003F97F7 /* Scenes */,
@@ -155,7 +156,6 @@
 				E904E1592AAE50E6007F7826 /* Assets.xcassets */,
 				E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */,
 				E904E15E2AAE50E6007F7826 /* Info.plist */,
-				E9B032C42AAFD42A003F97F7 /* CartManager.swift */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -305,6 +305,14 @@
 				E9BBB56D2AB51CCB00954EF0 /* CartManagerSpy.swift */,
 			);
 			path = CartManager;
+			sourceTree = "<group>";
+		};
+		E9BBB5752AB51EB300954EF0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E9B032C42AAFD42A003F97F7 /* CartManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
