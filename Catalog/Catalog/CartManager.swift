@@ -13,11 +13,11 @@ protocol CartManaging: AnyObject {
 	func delete(product: Product) -> [Product: Int]
 	func toggleState()
 	func getProducts() -> [Product: Int]
-	func getCurrentFilter() -> FilterType
+	func getCurrentFilter() -> FilterState
 	func getTotalCartPrice() -> Double
 }
 
-enum FilterType {
+enum FilterState {
 	case all
 	case onSale
 
@@ -31,7 +31,7 @@ enum FilterType {
 
 class CartManager: CartManaging {
 	private var productsDictionary: [Product: Int]
-	private var filter: FilterType = .all
+	private var filter: FilterState = .all
 	static public var shared = CartManager()
 
 	init(productsDictionary: [Product: Int] = [:]) {
@@ -78,16 +78,16 @@ class CartManager: CartManaging {
 		}
 	}
 
-	func getCurrentFilter() -> FilterType {
+	func getCurrentFilter() -> FilterState {
 		return filter
 	}
 
 	func getTotalCartPrice() -> Double {
 		var sum: Double = 0
-		getProducts().forEach { product in
-			let valueString = product.key.onSale ? product.key.promotionalPrice : product.key.price
+		getProducts().forEach { products in
+			let valueString = products.key.onSale ? products.key.promotionalPrice : products.key.price
 			if let number = Formatter.convertReaisStringToDouble(valueString: valueString) {
-				sum += number
+				sum += number * Double(productsDictionary[products.key]!)
 			}
 		}
 		return sum

@@ -74,6 +74,7 @@ final class CartViewController: UIViewController {
 
 	func displayProducts(products: [Product: Int]) {
 		self.products = products
+		interactor.calculateTotalCartPrice()
 		reloadUI()
 	}
 
@@ -144,16 +145,13 @@ extension CartViewController {
 extension CartViewController: ProductCartCellDelegate {
 	func addToCart(product: Product) {
 		interactor.add(product: product)
-		interactor.calculateTotalCartPrice()
 	}
 
 	func removeFromCart(product: Product) {
 		interactor.remove(product: product)
-		interactor.calculateTotalCartPrice()
 	}
 
 	func deleteFromCart(product: Product) {
 		interactor.delete(product: product)
-		interactor.calculateTotalCartPrice()
 	}
 }
