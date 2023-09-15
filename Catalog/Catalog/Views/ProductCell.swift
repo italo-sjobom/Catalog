@@ -16,6 +16,8 @@ class ProductCell: UITableViewCell {
 		imageView.translatesAutoresizingMaskIntoConstraints = false
 		imageView.clipsToBounds = true
 		imageView.contentMode = .scaleAspectFit
+		imageView.image = UIImage(systemName: "photo")
+		imageView.tintColor = .gray
 		return imageView
 	}()
 	lazy var infoStackView: UIStackView = {
