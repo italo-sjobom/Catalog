@@ -15,7 +15,7 @@ protocol CartPresenting {
 }
 
 final class CartPresenter: CartPresenting {
-	weak var viewController: CartViewController?
+	weak var viewController: CartDisplaying?
 	
 	func present(product: Product) {
 		

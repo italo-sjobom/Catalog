@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol CartDisplaying: AnyObject {
+	func displayProducts(products: [Product: Int])
+	func displayFilterButton(title: String)
+	func displayTotalCartPrice(value: Double)
+}
+
 final class CartViewController: UIViewController {
 	lazy var tableView: UITableView = {
 		let tableView = UITableView(frame: .zero, style: .plain)
@@ -71,21 +77,6 @@ final class CartViewController: UIViewController {
 		interactor.toggleState()
 		interactor.calculateTotalCartPrice()
 	}
-
-	func displayProducts(products: [Product: Int]) {
-		self.products = products
-		interactor.calculateTotalCartPrice()
-		reloadUI()
-	}
-
-	func displayFilterButton(title: String) {
-		filterButton.setTitle(title, for: .normal)
-	}
-
-	func displayTotalCartPrice(value: Double) {
-		totalLabel.text = nil
-		totalLabel.text = "TOTAL: R$ " + String(format: "%.2f", value)
-	}
 }
 
 //MARK: UITableViewDataSource e UITableViewDelegate
@@ -142,6 +133,25 @@ extension CartViewController {
 	}
 }
 
+//MARK: Displaying
+extension CartViewController: CartDisplaying {
+	func displayProducts(products: [Product: Int]) {
+		self.products = products
+		interactor.calculateTotalCartPrice()
+		reloadUI()
+	}
+
+	func displayFilterButton(title: String) {
+		filterButton.setTitle(title, for: .normal)
+	}
+
+	func displayTotalCartPrice(value: Double) {
+		totalLabel.text = nil
+		totalLabel.text = "TOTAL: R$ " + String(format: "%.2f", value)
+	}
+}
+
+//MARK: ProductCartCellDelegate
 extension CartViewController: ProductCartCellDelegate {
 	func addToCart(product: Product) {
 		interactor.add(product: product)
