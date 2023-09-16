@@ -18,7 +18,7 @@ final class CartPresenter: CartPresenting {
 	weak var viewController: CartDisplaying?
 	
 	func present(product: Product) {
-		
+		//TODO: Chamar a apresentação da scene de detalhamento do produto
 	}
 
 	func present(products: [Product: Int]) {

@@ -38,7 +38,7 @@ final class CartInteractor: CartInteracting {
 	}
 
 	func open(product: Product) {
-
+		//TODO: Chamar a apresentação da scene de detalhamento do produto
 	}
 
 	func calculateTotalCartPrice() {
