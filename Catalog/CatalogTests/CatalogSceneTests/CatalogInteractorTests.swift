@@ -98,12 +98,4 @@ final class CatalogInteractorTests: XCTestCase {
 		sut.addToCart(product: doubles.productsResponseMock.getProducts().randomElement()!)
 		XCTAssertEqual(doubles.cartManagerSpy.addCallsCount, 1)
 	}
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-
 }
