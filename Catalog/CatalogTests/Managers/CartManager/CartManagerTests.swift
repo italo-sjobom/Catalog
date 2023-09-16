@@ -10,18 +10,16 @@ import XCTest
 
 final class CartManagerTests: XCTestCase {
 	typealias Doubles = (
-		cartManagerSpy: CartManagerSpy,
 		productsMock: ProductsResponseMock,
 		cartManagerMock: CartManagerMock
 	)
 
 	func makeSut() -> (CartManager, Doubles) {
-		let cartManagerSpy = CartManagerSpy()
 		let productsMock = ProductsResponseMock()
 		let cartMock = CartManagerMock(products: productsMock.getProducts())
 
 		let sut = CartManager(productsDictionary: cartMock.getProducts())
-		let doubles = (cartManagerSpy, productsMock, cartMock)
+		let doubles = (productsMock, cartMock)
 		return (sut, doubles)
 	}
 
