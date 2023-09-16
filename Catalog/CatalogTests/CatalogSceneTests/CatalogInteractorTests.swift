@@ -26,15 +26,7 @@ final class CatalogInteractorTests: XCTestCase {
 		let doubles = (serviceMock, productResponseMock, presenterSpy, cartManagerSpy)
 		return (sut, doubles)
 	}
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
+	
     func testFetchProducts_WhenCalled_ShouldReturnSuccess() throws {
         let (sut, doubles) = makeSut()
 		doubles.serviceMock.fetchProductsCompletion = { completion in

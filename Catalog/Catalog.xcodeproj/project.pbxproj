@@ -11,7 +11,6 @@
 		E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1522AAE50E5007F7826 /* SceneDelegate.swift */; };
 		E904E15A2AAE50E6007F7826 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E904E1592AAE50E6007F7826 /* Assets.xcassets */; };
 		E904E15D2AAE50E6007F7826 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */; };
-		E904E1682AAE50E6007F7826 /* CatalogTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1672AAE50E6007F7826 /* CatalogTests.swift */; };
 		E904E1722AAE50E7007F7826 /* CatalogUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1712AAE50E7007F7826 /* CatalogUITests.swift */; };
 		E904E1742AAE50E7007F7826 /* CatalogUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E1732AAE50E7007F7826 /* CatalogUITestsLaunchTests.swift */; };
 		E904E37F2AAE542A007F7826 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E37E2AAE542A007F7826 /* Product.swift */; };
@@ -68,7 +67,6 @@
 		E904E15C2AAE50E6007F7826 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E904E15E2AAE50E6007F7826 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E904E1632AAE50E6007F7826 /* CatalogTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalogTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		E904E1672AAE50E6007F7826 /* CatalogTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogTests.swift; sourceTree = "<group>"; };
 		E904E16D2AAE50E7007F7826 /* CatalogUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CatalogUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E904E1712AAE50E7007F7826 /* CatalogUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogUITests.swift; sourceTree = "<group>"; };
 		E904E1732AAE50E7007F7826 /* CatalogUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -172,7 +170,6 @@
 				E9BBB56C2AB51CB700954EF0 /* Managers */,
 				E9BBB5692AB517F900954EF0 /* Mocks */,
 				E9BBB5642AB3E2AD00954EF0 /* CatalogSceneTests */,
-				E904E1672AAE50E6007F7826 /* CatalogTests.swift */,
 			);
 			path = CatalogTests;
 			sourceTree = "<group>";
@@ -311,7 +308,7 @@
 		E9BBB5702AB51D3900954EF0 /* CartManager */ = {
 			isa = PBXGroup;
 			children = (
-				E9BBB56D2AB51CCB00954EF0 /* CartManagerSpy.swift */,
+				E9BBB57C2AB538F900954EF0 /* Spys */,
 			);
 			path = CartManager;
 			sourceTree = "<group>";
@@ -322,6 +319,14 @@
 				E9B032C42AAFD42A003F97F7 /* CartManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		E9BBB57C2AB538F900954EF0 /* Spys */ = {
+			isa = PBXGroup;
+			children = (
+				E9BBB56D2AB51CCB00954EF0 /* CartManagerSpy.swift */,
+			);
+			path = Spys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -488,7 +493,6 @@
 				E9BBB5772AB522EB00954EF0 /* CatalogPresenterTests.swift in Sources */,
 				E9BBB56E2AB51CCB00954EF0 /* CartManagerSpy.swift in Sources */,
 				E9BBB56B2AB5180F00954EF0 /* ProductResponseMock.swift in Sources */,
-				E904E1682AAE50E6007F7826 /* CatalogTests.swift in Sources */,
 				E9BBB5742AB51DA800954EF0 /* CatalogServiceMock.swift in Sources */,
 				E9BBB5792AB5230200954EF0 /* CatalogViewControllerSpy.swift in Sources */,
 			);
