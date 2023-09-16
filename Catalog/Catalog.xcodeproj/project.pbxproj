@@ -20,6 +20,10 @@
 		E98C13D72AB5EFDE00441A92 /* CartViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13D62AB5EFDE00441A92 /* CartViewControllerSpy.swift */; };
 		E98C13D92AB5F30D00441A92 /* CartManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13D82AB5F30D00441A92 /* CartManagerMock.swift */; };
 		E98C13DD2AB6008200441A92 /* CartManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13DC2AB6008200441A92 /* CartManagerTests.swift */; };
+		E98C13E12AB61D1C00441A92 /* CatalogServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13E02AB61D1C00441A92 /* CatalogServiceTests.swift */; };
+		E98C13E32AB621DE00441A92 /* CatalogNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13E22AB621DE00441A92 /* CatalogNetwork.swift */; };
+		E98C13E62AB622E900441A92 /* CatalogRequestMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13E52AB622E900441A92 /* CatalogRequestMapper.swift */; };
+		E98C13E92AB6326100441A92 /* CatalogNetworkingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13E82AB6326100441A92 /* CatalogNetworkingMock.swift */; };
 		E9B030AF2AAE7E1B003F97F7 /* ProductsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */; };
 		E9B030B62AAE8132003F97F7 /* ProductCatalogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B42AAE8132003F97F7 /* ProductCatalogCell.swift */; };
 		E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */; };
@@ -83,6 +87,10 @@
 		E98C13D62AB5EFDE00441A92 /* CartViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewControllerSpy.swift; sourceTree = "<group>"; };
 		E98C13D82AB5F30D00441A92 /* CartManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerMock.swift; sourceTree = "<group>"; };
 		E98C13DC2AB6008200441A92 /* CartManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerTests.swift; sourceTree = "<group>"; };
+		E98C13E02AB61D1C00441A92 /* CatalogServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogServiceTests.swift; sourceTree = "<group>"; };
+		E98C13E22AB621DE00441A92 /* CatalogNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNetwork.swift; sourceTree = "<group>"; };
+		E98C13E52AB622E900441A92 /* CatalogRequestMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogRequestMapper.swift; sourceTree = "<group>"; };
+		E98C13E82AB6326100441A92 /* CatalogNetworkingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogNetworkingMock.swift; sourceTree = "<group>"; };
 		E9B030AE2AAE7E1B003F97F7 /* ProductsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsResponse.swift; sourceTree = "<group>"; };
 		E9B030B42AAE8132003F97F7 /* ProductCatalogCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProductCatalogCell.swift; sourceTree = "<group>"; };
 		E9B030B52AAE8132003F97F7 /* CatalogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 		E904E1662AAE50E6007F7826 /* CatalogTests */ = {
 			isa = PBXGroup;
 			children = (
+				E98C13DE2AB61CF300441A92 /* ServicesTests */,
 				E9BBB57F2AB5DE7600954EF0 /* CartSceneTests */,
 				E9BBB56C2AB51CB700954EF0 /* Managers */,
 				E9BBB5692AB517F900954EF0 /* Mocks */,
@@ -209,7 +218,7 @@
 		E904E38B2AAE6988007F7826 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				E904E38C2AAE69B0007F7826 /* CatalogService.swift */,
+				E98C13E42AB622C400441A92 /* Catalog */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -218,6 +227,42 @@
 			isa = PBXGroup;
 			children = (
 				E98C13D82AB5F30D00441A92 /* CartManagerMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		E98C13DE2AB61CF300441A92 /* ServicesTests */ = {
+			isa = PBXGroup;
+			children = (
+				E98C13E72AB6323A00441A92 /* Mocks */,
+				E98C13DF2AB61CFE00441A92 /* CatalogService */,
+			);
+			path = ServicesTests;
+			sourceTree = "<group>";
+		};
+		E98C13DF2AB61CFE00441A92 /* CatalogService */ = {
+			isa = PBXGroup;
+			children = (
+				E98C13E02AB61D1C00441A92 /* CatalogServiceTests.swift */,
+			);
+			path = CatalogService;
+			sourceTree = "<group>";
+		};
+		E98C13E42AB622C400441A92 /* Catalog */ = {
+			isa = PBXGroup;
+			children = (
+				E904E38C2AAE69B0007F7826 /* CatalogService.swift */,
+				E98C13E22AB621DE00441A92 /* CatalogNetwork.swift */,
+				E98C13E52AB622E900441A92 /* CatalogRequestMapper.swift */,
+			);
+			path = Catalog;
+			sourceTree = "<group>";
+		};
+		E98C13E72AB6323A00441A92 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E98C13E82AB6326100441A92 /* CatalogNetworkingMock.swift */,
+				E9BBB5732AB51DA800954EF0 /* CatalogServiceMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -303,7 +348,6 @@
 			isa = PBXGroup;
 			children = (
 				E9BBB56A2AB5180F00954EF0 /* ProductResponseMock.swift */,
-				E9BBB5732AB51DA800954EF0 /* CatalogServiceMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -520,7 +564,9 @@
 				E9B032D32AB20A8A003F97F7 /* NSAttributedString+StrikethroughStyle.swift in Sources */,
 				E904E1532AAE50E5007F7826 /* SceneDelegate.swift in Sources */,
 				E9B032BF2AAF81EC003F97F7 /* CartInteractor.swift in Sources */,
+				E98C13E62AB622E900441A92 /* CatalogRequestMapper.swift in Sources */,
 				E9B030BB2AAEA0EB003F97F7 /* CatalogPresenter.swift in Sources */,
+				E98C13E32AB621DE00441A92 /* CatalogNetwork.swift in Sources */,
 				E9B030B92AAEA0CD003F97F7 /* CatalogInteractor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +575,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E98C13E92AB6326100441A92 /* CatalogNetworkingMock.swift in Sources */,
 				E98C13D92AB5F30D00441A92 /* CartManagerMock.swift in Sources */,
 				E98C13DD2AB6008200441A92 /* CartManagerTests.swift in Sources */,
 				E9BBB5722AB51D7600954EF0 /* CatalogPresenterSpy.swift in Sources */,
@@ -540,6 +587,7 @@
 				E9BBB5772AB522EB00954EF0 /* CatalogPresenterTests.swift in Sources */,
 				E9BBB56E2AB51CCB00954EF0 /* CartManagerSpy.swift in Sources */,
 				E98C13D52AB5ED7200441A92 /* CartPresenterTests.swift in Sources */,
+				E98C13E12AB61D1C00441A92 /* CatalogServiceTests.swift in Sources */,
 				E9BBB56B2AB5180F00954EF0 /* ProductResponseMock.swift in Sources */,
 				E9BBB5742AB51DA800954EF0 /* CatalogServiceMock.swift in Sources */,
 				E9BBB5792AB5230200954EF0 /* CatalogViewControllerSpy.swift in Sources */,

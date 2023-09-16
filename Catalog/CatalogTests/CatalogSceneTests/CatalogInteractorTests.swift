@@ -30,7 +30,7 @@ final class CatalogInteractorTests: XCTestCase {
     func testFetchProducts_WhenCalled_ShouldReturnSuccess() throws {
         let (sut, doubles) = makeSut()
 		doubles.serviceMock.fetchProductsCompletion = { completion in
-			completion(.success(doubles.productsResponseMock))
+			completion(.success(doubles.productsResponseMock.products))
 		}
 		sut.fetchProducts()
 		XCTAssertEqual(doubles.serviceMock.fetchProductsCount, 1)
@@ -40,7 +40,7 @@ final class CatalogInteractorTests: XCTestCase {
 	func testFetchProducts_WhenCalled_ShouldReturnFailureWithApiError() throws {
 		let (sut, doubles) = makeSut()
 		doubles.serviceMock.fetchProductsCompletion = { completion in
-			completion(.failure(.invalidApi))
+			completion(.failure(.invalidApiUrl))
 		}
 		sut.fetchProducts()
 		XCTAssertEqual(doubles.serviceMock.fetchProductsCount, 1)

@@ -42,7 +42,7 @@ final class CatalogInteractor: CatalogInteracting {
 			guard let self = self else { return }
 			switch result {
 				case .success(let productResponse):
-					self.presenter.presentProducts(products: productResponse.products)
+					self.presenter.presentProducts(products: productResponse)
 				case .failure(let error):
 					self.presenter.presentError(description: error.localizedDescription)
 			}
