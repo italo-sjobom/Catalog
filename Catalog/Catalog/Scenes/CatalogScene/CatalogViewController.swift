@@ -7,6 +7,12 @@
 
 import UIKit
 
+protocol CatalogDisplaying: AnyObject {
+	func displayProducts(products: [Product])
+	func displayError(description: String)
+	func displayScene(viewController: UIViewController)
+}
+
 final class CatalogViewController: UIViewController {
 
 	lazy var tableView: UITableView = {
@@ -43,7 +49,7 @@ final class CatalogViewController: UIViewController {
 		title = "Catalog"
 		configureViews()
 		loadData()
-		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .plain, target: self, action: #selector(displayCart))
+		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .plain, target: self, action: #selector(openCart))
 	}
 
 	override func loadView() {
@@ -76,9 +82,30 @@ extension CatalogViewController: UITableViewDataSource, UITableViewDelegate {
 	}
 }
 
+//MARK: Displaying
+extension CatalogViewController: CatalogDisplaying {
+	func displayProducts(products: [Product]) {
+		DispatchQueue.main.async { [weak self] in
+			self?.products = products
+			self?.reloadUI()
+		}
+	}
+
+	func displayError(description: String) {
+		DispatchQueue.main.async { [weak self] in
+			self?.displayAlert(title: "Ops, ocorreu um erro", message: description)
+			self?.reloadUI()
+		}
+	}
+
+	func displayScene(viewController: UIViewController) {
+		navigationController?.pushViewController(viewController, animated: true)
+	}
+}
+
 //MARK: Actions
 extension CatalogViewController {
-	@objc func displayCart(){
+	@objc func openCart() {
 		interactor.openCart()
 	}
 }
@@ -104,20 +131,6 @@ extension CatalogViewController {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 		present(alert, animated: true)
-	}
-
-	func displayProducts(products: [Product]) {
-		DispatchQueue.main.async { [weak self] in
-			self?.products = products
-			self?.reloadUI()
-		}
-	}
-
-	func displayError(description: String) {
-		DispatchQueue.main.async { [weak self] in
-			self?.displayAlert(title: "Ops, ocorreu um erro", message: description)
-			self?.reloadUI()
-		}
 	}
 }
 

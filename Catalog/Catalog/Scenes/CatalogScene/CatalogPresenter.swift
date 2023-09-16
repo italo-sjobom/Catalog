@@ -14,10 +14,10 @@ protocol CatalogPresenting {
 }
 
 final class CatalogPresenter: CatalogPresenting {
-	weak var viewController: CatalogViewController?
+	weak var viewController: CatalogDisplaying?
 
 	func presentCart(cartManager: CartManaging) {
-		viewController?.navigationController?.pushViewController(CartFactory.makeScene(cartManager: cartManager), animated: true)
+		viewController?.displayScene(viewController: CartFactory.makeScene(cartManager: cartManager))
 	}
 
 	func presentProducts(products: [Product]) {

@@ -15,6 +15,7 @@ final class CatalogInteractorTests: XCTestCase {
 		presenterSpy: CatalogPresenterSpy,
 		cartManagerSpy: CartManagerSpy
 	)
+
 	func makeSut() -> (CatalogInteractor, Doubles) {
 		let serviceMock = CatalogServiceMock()
 		let productResponseMock = ProductsResponseMock()
@@ -25,6 +26,7 @@ final class CatalogInteractorTests: XCTestCase {
 		let doubles = (serviceMock, productResponseMock, presenterSpy, cartManagerSpy)
 		return (sut, doubles)
 	}
+
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
