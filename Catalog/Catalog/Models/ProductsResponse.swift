@@ -4,7 +4,13 @@
 //
 //  Created by Italo Sjobom on 10/09/23.
 //
+import Foundation
 
-struct ProductsResponse: Codable {
-	let products: [Product]
+protocol ProductsResponsing: Codable {
+	var products: [Product] { get }
 }
+
+struct ProductsResponse: ProductsResponsing {
+	var products: [Product]
+}
+
