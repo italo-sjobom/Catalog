@@ -12,7 +12,7 @@ protocol ProductCellDelegate: AnyObject {
 }
 
 class ProductCatalogCell: ProductCell {
-	lazy var onSaleLabel: UILabel = UILabel.getUILabel(text: "On Sale", fontSize: 12, fontWeight: .heavy)
+	lazy var onSaleLabel: UILabel = UILabel.getUILabel(text: LocalizedStrings.getString(for: .onSaleFilter), fontSize: 12, fontWeight: .heavy)
 	lazy var sizesStackView: UIStackView = {
 		let stackView = UIStackView()
 		stackView.translatesAutoresizingMaskIntoConstraints = false

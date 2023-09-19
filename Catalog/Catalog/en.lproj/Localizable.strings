@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Catalog
+
+  Created by Italo Sjobom on 19/09/23.
+  
+*/
+
+"catalog_screen_title" = "Catalog";
+"error_alert_title" = "We have a problem";
+"ok_button" = "OK";
+"on_sale_filter" = "On Sale";
+"cart_screen_title" = "Cart";

@@ -40,7 +40,7 @@ final class CartViewController: UIViewController {
 	}()
 	lazy var filterButton: UIButton = {
 		let button = UIButton()
-		button.setTitle("On Sale", for: .normal)
+		button.setTitle(LocalizedStrings.getString(for: .onSaleFilter), for: .normal)
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.backgroundColor = .red
 		button.addTarget(self, action: #selector(filterAction), for: .touchUpInside)
@@ -61,7 +61,7 @@ final class CartViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Cart"
+		title = LocalizedStrings.getString(for: .cartScreenTitle)
 		configureViews()
 		interactor.calculateTotalCartPrice()
 	}

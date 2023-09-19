@@ -46,7 +46,7 @@ final class CatalogViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		title = "Catalog"
+		title = LocalizedStrings.getString(for: .catalogScreenTitle)
 		configureViews()
 		loadData()
 		navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "cart"), style: .plain, target: self, action: #selector(openCart))
@@ -93,7 +93,7 @@ extension CatalogViewController: CatalogDisplaying {
 
 	func displayError(description: String) {
 		DispatchQueue.main.async { [weak self] in
-			self?.displayAlert(title: "Ops, ocorreu um erro", message: description)
+			self?.displayAlert(title: LocalizedStrings.getString(for: .errorAlertTitle), message: description)
 			self?.reloadUI()
 		}
 	}
@@ -129,7 +129,7 @@ extension CatalogViewController {
 
 	private func displayAlert(title: String, message: String) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-		alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		alert.addAction(UIAlertAction(title: LocalizedStrings.getString(for: .okButton), style: .default, handler: nil))
 		present(alert, animated: true)
 	}
 }

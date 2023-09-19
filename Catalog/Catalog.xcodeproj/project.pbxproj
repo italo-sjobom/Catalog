@@ -16,6 +16,7 @@
 		E904E37F2AAE542A007F7826 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E37E2AAE542A007F7826 /* Product.swift */; };
 		E904E3812AAE5594007F7826 /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E3802AAE5594007F7826 /* Size.swift */; };
 		E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E904E38C2AAE69B0007F7826 /* CatalogService.swift */; };
+		E94877C12ABA169100739853 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E94877C32ABA169100739853 /* Localizable.strings */; };
 		E98C13D52AB5ED7200441A92 /* CartPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13D42AB5ED7200441A92 /* CartPresenterTests.swift */; };
 		E98C13D72AB5EFDE00441A92 /* CartViewControllerSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13D62AB5EFDE00441A92 /* CartViewControllerSpy.swift */; };
 		E98C13D92AB5F30D00441A92 /* CartManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = E98C13D82AB5F30D00441A92 /* CartManagerMock.swift */; };
@@ -50,6 +51,7 @@
 		E9BBB57B2AB526F700954EF0 /* CatalogInteractorSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBB57A2AB526F700954EF0 /* CatalogInteractorSpy.swift */; };
 		E9BBB5812AB5E1F900954EF0 /* CartInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBB5802AB5E1F900954EF0 /* CartInteractorTests.swift */; };
 		E9BBB5842AB5E42500954EF0 /* CartPresenterSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BBB5832AB5E42500954EF0 /* CartPresenterSpy.swift */; };
+		E9F469E92ABA189F003A8885 /* LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F469E82ABA189F003A8885 /* LocalizedStrings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		E904E37E2AAE542A007F7826 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		E904E3802AAE5594007F7826 /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		E904E38C2AAE69B0007F7826 /* CatalogService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogService.swift; sourceTree = "<group>"; };
+		E94877C22ABA169100739853 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		E94877C42ABA16AE00739853 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		E98C13D42AB5ED7200441A92 /* CartPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenterTests.swift; sourceTree = "<group>"; };
 		E98C13D62AB5EFDE00441A92 /* CartViewControllerSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewControllerSpy.swift; sourceTree = "<group>"; };
 		E98C13D82AB5F30D00441A92 /* CartManagerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerMock.swift; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 		E9BBB57A2AB526F700954EF0 /* CatalogInteractorSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogInteractorSpy.swift; sourceTree = "<group>"; };
 		E9BBB5802AB5E1F900954EF0 /* CartInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartInteractorTests.swift; sourceTree = "<group>"; };
 		E9BBB5832AB5E42500954EF0 /* CartPresenterSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartPresenterSpy.swift; sourceTree = "<group>"; };
+		E9F469E82ABA189F003A8885 /* LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStrings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +174,7 @@
 		E904E14F2AAE50E5007F7826 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
+				E9F469E72ABA1872003A8885 /* Helpers */,
 				E9BBB5752AB51EB300954EF0 /* Managers */,
 				E9BBB3642AB3C09B00954EF0 /* Views */,
 				E9B032D12AB20A6B003F97F7 /* Extensions */,
@@ -180,6 +186,7 @@
 				E904E1592AAE50E6007F7826 /* Assets.xcassets */,
 				E904E15B2AAE50E6007F7826 /* LaunchScreen.storyboard */,
 				E904E15E2AAE50E6007F7826 /* Info.plist */,
+				E94877C32ABA169100739853 /* Localizable.strings */,
 			);
 			path = Catalog;
 			sourceTree = "<group>";
@@ -415,6 +422,14 @@
 			path = Spys;
 			sourceTree = "<group>";
 		};
+		E9F469E72ABA1872003A8885 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				E9F469E82ABA189F003A8885 /* LocalizedStrings.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -501,6 +516,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"pt-BR",
 			);
 			mainGroup = E904E1442AAE50E5007F7826;
 			productRefGroup = E904E14E2AAE50E5007F7826 /* Products */;
@@ -520,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E904E15D2AAE50E6007F7826 /* LaunchScreen.storyboard in Resources */,
+				E94877C12ABA169100739853 /* Localizable.strings in Resources */,
 				E904E15A2AAE50E6007F7826 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,6 +572,7 @@
 				E904E38D2AAE69B0007F7826 /* CatalogService.swift in Sources */,
 				E9B032BD2AAF7FCF003F97F7 /* CartViewController.swift in Sources */,
 				E9B032D52AB23BA5003F97F7 /* UILabel.swift in Sources */,
+				E9F469E92ABA189F003A8885 /* LocalizedStrings.swift in Sources */,
 				E9B032C32AAF8203003F97F7 /* CartFactory.swift in Sources */,
 				E9B030B62AAE8132003F97F7 /* ProductCatalogCell.swift in Sources */,
 				E9B030B72AAE8132003F97F7 /* CatalogViewController.swift in Sources */,
@@ -627,6 +645,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		E94877C32ABA169100739853 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E94877C22ABA169100739853 /* en */,
+				E94877C42ABA16AE00739853 /* pt-BR */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -634,6 +661,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -694,6 +722,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
