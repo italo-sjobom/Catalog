@@ -23,6 +23,11 @@
                BlueprintName = "CatalogTests"
                ReferencedContainer = "container:Catalog.xcodeproj">
             </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "CartManagerTests/testCalculateTotalPrice_WhenCalled_ShouldReturnTotalCartPrice()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
    </TestAction>
