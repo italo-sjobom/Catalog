@@ -12,6 +12,7 @@ extension Formatter {
 		let formatter = NumberFormatter()
 		formatter.numberStyle = .currency
 		formatter.currencySymbol = "R$ "
+		formatter.currencyDecimalSeparator = ","
 		return formatter.number(from: valueString)?.doubleValue
 	}
 }
