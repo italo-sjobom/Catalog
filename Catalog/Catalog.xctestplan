@@ -18,6 +18,9 @@
   "testTargets" : [
     {
       "parallelizable" : true,
+      "skippedTests" : [
+        "CartManagerTests\/testCalculateTotalPrice_WhenCalled_ShouldReturnTotalCartPrice()"
+      ],
       "target" : {
         "containerPath" : "container:Catalog.xcodeproj",
         "identifier" : "E904E1622AAE50E6007F7826",

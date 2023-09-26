@@ -68,7 +68,7 @@ final class CartManagerTests: XCTestCase {
 		XCTAssertEqual(productsAfterDeletion, sut.getProducts())
 	}
 
-	func testCalculateTotalPrice_WhenCalles_ShouldReturnTotalCartPrice() throws {
+	func testCalculateTotalPrice_WhenCalled_ShouldReturnTotalCartPrice() throws {
 		let (sut, doubles) = makeSut()
 		let productsMockTotalPrice = doubles.cartManagerMock.totalPrice
 		let totalPrice = sut.getTotalCartPrice()
